@@ -29,7 +29,7 @@ public class Voile implements ModInitializer {
 
 	public static final String MOD_ID = "voile";
 	public static final String MOD_NAME = "Voile";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
 	@Override
 	public void onInitialize() {
