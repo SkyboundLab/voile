@@ -1,0 +1,8 @@
+{
+  "type": "voile:modify_behavior",
+  "behavior": "neutral",
+  "entity_condition": {
+    "type": "apoli:entity_type",
+    "entity_type": "minecraft:enderman"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "origin.voile.test.name": "Test",
+  "origin.voile.test.description": "The quick brown fox jumps over the lazy dog.",
+
+  "power.voile.zombie_arms.name": "Zombie Arms Example",
+  "power.voile.zombie_arms.description": "You point your arms forward like a zombie, except when sneaking.",
+  "power.voile.bees_ignore.name": "Modify Behavior Example",
+  "power.voile.bees_ignore.description": "Makes bees ignore you.",
+  "power.voile.villager_enemy.name": "Modify Behavior Example 2",
+  "power.voile.villager_enemy.description": "Makes villagers scared of you and golems hostile towards you.",
+  "power.voile.enderman_stare.name": "Modify Behavior Example 3",
+  "power.voile.enderman_stare.description": "Prevent endermen from getting angry if you stare at them.",
+  "power.voile.undead_friends.name": "Modify Behavior Example 4",
+  "power.voile.undead_friends.description": "Undead mobs are neutral towards you.",
+  "power.voile.burning_moon.name": "Moon Phase Example",
+  "power.voile.burning_moon.description": "You burn during a full moon at night.",
+  "power.voile.bonus_damage.name": "Enchantability Example",
+  "power.voile.bonus_damage.description": "You deal bonus damage with gold tools."
+}

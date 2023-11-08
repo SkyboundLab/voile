@@ -1,0 +1,19 @@
+{
+  "type": "apoli:burn",
+  "interval": 20,
+  "burn_duration": 2,
+  "condition": {
+    "type": "apoli:and",
+    "conditions": [
+      {
+        "type": "voile:moon_phase",
+        "comparison": "==",
+        "compare_to": 0
+      },
+      {
+        "type": "apoli:daytime",
+        "inverted": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "required": true,
+  "package": "net.reimaden.voile.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ActiveTargetGoalMixin",
+    "BeeEntityMixin",
+    "CatEntityMixin",
+    "DolphinEntityMixin",
+    "EnderDragonEntityMixin",
+    "EndermanEntityMixin",
+    "EscapeDangerGoalMixin",
+    "FleeEntityGoalMixin",
+    "FoxEntityMixin",
+    "HoglinBrainMixin",
+    "IronGolemEntityMixin",
+    "LlamaEntityMixin",
+    "MobEntityAccessor",
+    "MobEntityMixin",
+    "OcelotEntityMixin",
+    "PandaEntityMixin",
+    "PiglinBrainMixin",
+    "PiglinBruteBrainMixin",
+    "PolarBearEntityMixin",
+    "PufferFishEntityMixin",
+    "SnowGolemEntityMixin",
+    "SpiderEntityMixin",
+    "StrafePlayerPhaseMixin",
+    "TemptGoalMixin",
+    "VillagerHostilesSensorMixin",
+    "WanderingTraderEntityMixin",
+    "WardenEntityMixin",
+    "WitherEntityMixin",
+    "WolfEntityMixin",
+    "ZoglinEntityMixin",
+    "ZombifiedPiglinEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

@@ -1,0 +1,7 @@
+{
+  "type": "voile:zombie_arms",
+  "condition": {
+    "type": "apoli:sneaking",
+    "inverted": true
+  }
+}

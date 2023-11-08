@@ -1,0 +1,17 @@
+{
+  "type": "apoli:modify_damage_dealt",
+  "modifier": {
+    "name": "Extra damage with high enchantability",
+    "operation": "addition",
+    "value": "5"
+  },
+  "condition": {
+    "type": "apoli:equipped_item",
+    "equipment_slot": "mainhand",
+    "item_condition": {
+      "type": "voile:enchantability",
+      "comparison": ">=",
+      "compare_to": 22
+    }
+  }
+}

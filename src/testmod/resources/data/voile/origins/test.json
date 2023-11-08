@@ -1,0 +1,14 @@
+{
+  "powers": [
+    "voile:zombie_arms",
+    "voile:bees_ignore",
+    "voile:villager_enemy",
+    "voile:enderman_stare",
+    "voile:undead_friends",
+    "voile:burning_moon",
+    "voile:bonus_damage"
+  ],
+  "icon": "minecraft:grass_block",
+  "order": 1,
+  "impact": 1
+}

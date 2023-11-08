@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "voile-testmod",
+  "version": "${version}",
+  "name": "Voile TestMod",
+  "description": "A test mod for Voile",
+  "authors": [
+    "${mod_author}"
+  ],
+  "contact": {
+    "sources": "https://github.com/Maxmani/voile",
+    "issues": "https://github.com/Maxmani/voile/issues"
+  },
+  "license": "LGPL-3.0-or-later",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.reimaden.voile.testmod.TestMod"
+    ]
+  },
+  "depends": {
+    "voile": "*"
+  }
+}

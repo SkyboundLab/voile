@@ -1,0 +1,8 @@
+{
+  "type": "voile:modify_behavior",
+  "behavior": "hostile",
+  "entity_condition": {
+    "type": "apoli:in_tag",
+    "tag": "voile:villagers_and_friends"
+  }
+}

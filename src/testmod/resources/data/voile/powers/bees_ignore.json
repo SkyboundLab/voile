@@ -1,0 +1,8 @@
+{
+  "type": "voile:modify_behavior",
+  "behavior": "passive",
+  "entity_condition": {
+    "type": "apoli:entity_type",
+    "entity_type": "minecraft:bee"
+  }
+}
