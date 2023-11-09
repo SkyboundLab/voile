@@ -89,7 +89,7 @@ dependencies {
 	modImplementation "com.github.apace100:apoli:${project.apoli_version}"
 
 	// Origins (for test mod)
-	modRuntimeOnly "com.github.apace100:origins-fabric:${project.origins_version}"
+	modLocalRuntime "com.github.apace100:origins-fabric:${project.origins_version}"
 }
 
 processResources {
