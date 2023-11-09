@@ -38,6 +38,8 @@ public class VoilePowers {
             .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
             data -> (type, player) -> new ModifyBehaviorPower(type, player, data.get("behavior"), data.get("entity_condition"), data.get("bientity_condition")))
             .allowCondition());
+    public static final PowerFactory<Power> FLIP_MODEL = registerPower(new PowerFactory<>(Voile.id("flip_model"), new SerializableData(),
+            data -> FlipModelPower::new)).allowCondition();
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);
