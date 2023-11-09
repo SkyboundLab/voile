@@ -34,9 +34,15 @@ import net.reimaden.voile.Voile;
 @SuppressWarnings("unused")
 public class VoileConditions {
 
+    // Entity Conditions
+    public static final ConditionFactory<Entity> MOON_PHASE = registerEntityCondition(new ConditionFactory<>(Voile.id("moon_phase"), new SerializableData()
+            .add("comparison", ApoliDataTypes.COMPARISON)
+            .add("compare_to", SerializableDataTypes.INT),
+            (data, entity) -> ((Comparison) data.get("comparison")).compare(entity.getWorld().getMoonPhase(), data.getInt("compare_to"))));
+
     // Item Conditions
     public static final ConditionFactory<Pair<World, ItemStack>> ENCHANTABILITY = registerItemCondition(new ConditionFactory<>(Voile.id("enchantability"), new SerializableData()
-            .add("comparison", ApoliDataTypes.COMPARISON)
+            .add("comparison", ApoliDataTypes.COMPARISON, Comparison.GREATER_THAN_OR_EQUAL)
             .add("compare_to", SerializableDataTypes.INT),
             (data, pair) -> {
                 ItemStack stack = pair.getRight();
@@ -44,12 +50,6 @@ public class VoileConditions {
 
                 return ((Comparison) data.get("comparison")).compare(enchantability, data.getInt("compare_to"));
             }));
-
-    // Entity Conditions
-    public static final ConditionFactory<Entity> MOON_PHASE = registerEntityCondition(new ConditionFactory<>(Voile.id("moon_phase"), new SerializableData()
-            .add("comparison", ApoliDataTypes.COMPARISON)
-            .add("compare_to", SerializableDataTypes.INT),
-            (data, entity) -> ((Comparison) data.get("comparison")).compare(entity.getWorld().getMoonPhase(), data.getInt("compare_to"))));
 
     private static ConditionFactory<Entity> registerEntityCondition(ConditionFactory<Entity> factory) {
         return Registry.register(ApoliRegistries.ENTITY_CONDITION, factory.getSerializerId(), factory);
