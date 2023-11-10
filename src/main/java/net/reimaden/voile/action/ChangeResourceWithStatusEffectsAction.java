@@ -40,12 +40,13 @@ public class ChangeResourceWithStatusEffectsAction {
         PowerType<?> powerType = data.get("resource");
         Power power = component.getPower(powerType);
         StatusEffectCategory category = data.get("category");
+        int change = data.getInt("change");
         ResourceOperation operation = data.get("operation");
 
         // Get the number of status effects of the given category
         int effects = living.getStatusEffects().stream()
                 .filter(effect -> effect.getEffectType().getCategory().equals(category))
-                .mapToInt(effect -> 1)
+                .mapToInt(effect -> change)
                 .sum();
 
         if (power instanceof VariableIntPower variableIntPower) {

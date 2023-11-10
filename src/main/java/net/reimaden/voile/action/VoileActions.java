@@ -24,6 +24,7 @@ import io.github.apace100.apoli.registry.ApoliRegistries;
 import io.github.apace100.apoli.util.ResourceOperation;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
+import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.Registry;
@@ -35,6 +36,7 @@ public class VoileActions {
     public static final ActionFactory<Entity> CHANGE_RESOURCE_WITH_STATUS_EFFECTS = registerEntityAction(new ActionFactory<>(Voile.id("change_resource_with_status_effects"), new SerializableData()
             .add("resource", ApoliDataTypes.POWER_TYPE)
             .add("category", SerializableDataType.enumValue(StatusEffectCategory.class))
+            .add("change", SerializableDataTypes.INT, 1)
             .add("operation", ApoliDataTypes.RESOURCE_OPERATION, ResourceOperation.ADD),
             ChangeResourceWithStatusEffectsAction::action)
     );
