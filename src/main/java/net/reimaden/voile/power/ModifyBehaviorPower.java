@@ -45,7 +45,7 @@ public class ModifyBehaviorPower extends Power {
     }
 
     public EntityBehavior getDesiredBehavior() {
-        return desiredBehavior;
+        return this.desiredBehavior;
     }
 
     public enum EntityBehavior {
