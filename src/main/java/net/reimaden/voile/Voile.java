@@ -19,6 +19,7 @@
 package net.reimaden.voile;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 import net.reimaden.voile.action.VoileActions;
 import net.reimaden.voile.condition.VoileConditions;
@@ -33,6 +34,7 @@ public class Voile implements ModInitializer {
 	public static final String MOD_ID = "voile";
 	public static final String MOD_NAME = "Voile";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
+	private static String VERSION;
 
 	@Override
 	public void onInitialize() {
@@ -41,7 +43,17 @@ public class Voile implements ModInitializer {
 		VoileConditions.register();
 		VoileActions.register();
 
-		LOGGER.info(MOD_NAME + " has initialized. Ready to further power up your game!");
+		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
+			VERSION = modContainer.getMetadata().getVersion().getFriendlyString();
+			if (VERSION.contains("+")) {
+				VERSION = VERSION.split("\\+")[0];
+			}
+			if (VERSION.contains("-")) {
+				VERSION = VERSION.split("-")[0];
+			}
+		});
+
+		LOGGER.info(MOD_NAME + " " + VERSION + " has initialized. Ready to further power up your game!");
 	}
 
 	public static Identifier id(String path) {
