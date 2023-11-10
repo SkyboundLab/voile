@@ -20,6 +20,7 @@ package net.reimaden.voile;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
+import net.reimaden.voile.action.VoileActions;
 import net.reimaden.voile.condition.VoileConditions;
 import net.reimaden.voile.power.VoilePowers;
 import org.jetbrains.annotations.ApiStatus;
@@ -38,6 +39,7 @@ public class Voile implements ModInitializer {
 		// Init stuff
 		VoilePowers.register();
 		VoileConditions.register();
+		VoileActions.register();
 
 		LOGGER.info(MOD_NAME + " has initialized. Ready to further power up your game!");
 	}

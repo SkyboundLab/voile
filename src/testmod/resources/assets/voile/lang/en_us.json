@@ -17,5 +17,7 @@
   "power.voile.bonus_damage.name": "Enchantability Example",
   "power.voile.bonus_damage.description": "You deal bonus damage with gold tools.",
   "power.voile.big.name": "Modify Scale Example",
-  "power.voile.big.description": "You are taller than a regular player."
+  "power.voile.big.description": "You are taller than a regular player.",
+  "power.voile.change_resource_with_effects.name": "Change Resource With Status Effects Example",
+  "power.voile.change_resource_with_effects.description": "Every beneficial status effect increases the resource by one."
 }
