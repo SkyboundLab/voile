@@ -15,5 +15,7 @@
   "power.voile.burning_moon.name": "Moon Phase Example",
   "power.voile.burning_moon.description": "You burn during a full moon at night.",
   "power.voile.bonus_damage.name": "Enchantability Example",
-  "power.voile.bonus_damage.description": "You deal bonus damage with gold tools."
+  "power.voile.bonus_damage.description": "You deal bonus damage with gold tools.",
+  "power.voile.big.name": "Modify Scale Example",
+  "power.voile.big.description": "You are taller than a regular player."
 }

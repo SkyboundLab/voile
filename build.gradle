@@ -86,7 +86,12 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Apoli
-	modImplementation "com.github.apace100:apoli:${project.apoli_version}"
+	modApi "com.github.apace100:apoli:${project.apoli_version}"
+
+	// Pehkui
+	modApi("com.github.Virtuoel:Pehkui:${project.pehkui_version}", {
+		exclude group: "net.fabricmc.fabric-api"
+	})
 
 	// Origins (for test mod)
 	modLocalRuntime "com.github.apace100:origins-fabric:${project.origins_version}"

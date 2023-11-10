@@ -22,9 +22,11 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.reimaden.voile.condition.VoileConditions;
 import net.reimaden.voile.power.VoilePowers;
+import org.jetbrains.annotations.ApiStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@ApiStatus.Internal
 public class Voile implements ModInitializer {
 
 	public static final String MOD_ID = "voile";

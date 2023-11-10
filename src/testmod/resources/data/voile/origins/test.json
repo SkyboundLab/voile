@@ -6,7 +6,8 @@
     "voile:enderman_stare",
     "voile:undead_friends",
     "voile:burning_moon",
-    "voile:bonus_damage"
+    "voile:bonus_damage",
+    "voile:big"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

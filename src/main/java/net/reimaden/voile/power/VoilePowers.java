@@ -24,6 +24,7 @@ import io.github.apace100.apoli.power.factory.PowerFactory;
 import io.github.apace100.apoli.registry.ApoliRegistries;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
+import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.registry.Registry;
 import net.reimaden.voile.Voile;
 
@@ -31,7 +32,8 @@ import net.reimaden.voile.Voile;
 public class VoilePowers {
 
     public static final PowerFactory<Power> ZOMBIE_ARMS = registerPower(new PowerFactory<>(Voile.id("zombie_arms"), new SerializableData(),
-            data -> ZombieArmsPower::new)).allowCondition();
+            data -> ZombieArmsPower::new))
+            .allowCondition();
     public static final PowerFactory<Power> MODIFY_BEHAVIOR = registerPower(new PowerFactory<>(Voile.id("modify_behavior"), new SerializableData()
             .add("behavior", SerializableDataType.enumValue(ModifyBehaviorPower.EntityBehavior.class))
             .add("entity_condition", ApoliDataTypes.ENTITY_CONDITION, null)
@@ -39,7 +41,13 @@ public class VoilePowers {
             data -> (type, player) -> new ModifyBehaviorPower(type, player, data.get("behavior"), data.get("entity_condition"), data.get("bientity_condition")))
             .allowCondition());
     public static final PowerFactory<Power> FLIP_MODEL = registerPower(new PowerFactory<>(Voile.id("flip_model"), new SerializableData(),
-            data -> FlipModelPower::new)).allowCondition();
+            data -> FlipModelPower::new))
+            .allowCondition();
+    public static final PowerFactory<Power> MODIFY_SCALE = registerPower(new PowerFactory<>(Voile.id("modify_scale"), new SerializableData()
+            .add("scale_types", SerializableDataTypes.IDENTIFIERS, ModifyScalePower.DEFAULT_SCALE_TYPES)
+            .add("scale", SerializableDataTypes.FLOAT),
+            data -> (type, entity) -> new ModifyScalePower(type, entity, data.get("scale_types"), data.getFloat("scale")))
+            .allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);
