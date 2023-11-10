@@ -93,6 +93,9 @@ dependencies {
 		exclude group: "net.fabricmc.fabric-api"
 	})
 
+	// MixinExtras
+	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${project.mixinextras_version}")))
+
 	// Origins (for test mod)
 	modLocalRuntime "com.github.apace100:origins-fabric:${project.origins_version}"
 }
@@ -106,6 +109,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
+	//noinspection GroovyAssignabilityCheck, GroovyAccessibility
 	it.options.release = 17
 }
 
@@ -131,7 +135,9 @@ jar {
 // configure the maven publication
 publishing {
 	publications {
+		//noinspection GroovyAssignabilityCheck
 		mavenJava(MavenPublication) {
+			//noinspection GroovyAssignabilityCheck
 			from components.java
 		}
 	}

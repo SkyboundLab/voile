@@ -8,7 +8,10 @@
     "voile:burning_moon",
     "voile:bonus_damage",
     "voile:big",
-    "voile:change_resource_with_effects"
+    "voile:change_resource_with_effects",
+    "voile:anvil_feet",
+    "voile:hurt_sound",
+    "voile:death_sound"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

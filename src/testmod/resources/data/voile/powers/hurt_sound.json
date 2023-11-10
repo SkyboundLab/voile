@@ -1,0 +1,4 @@
+{
+  "type": "voile:modify_hurt_sound",
+  "sound": "minecraft:entity.ghast.hurt"
+}

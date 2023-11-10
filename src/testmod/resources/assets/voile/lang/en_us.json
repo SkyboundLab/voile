@@ -19,5 +19,11 @@
   "power.voile.big.name": "Modify Scale Example",
   "power.voile.big.description": "You are taller than a regular player.",
   "power.voile.change_resource_with_effects.name": "Change Resource With Status Effects Example",
-  "power.voile.change_resource_with_effects.description": "Every beneficial status effect increases the resource by two."
+  "power.voile.change_resource_with_effects.description": "Every beneficial status effect increases the resource by two.",
+  "power.voile.anvil_feet.name": "Modify Footstep Sound Example",
+  "power.voile.anvil_feet.description": "You make an anvil sound when you walk.",
+  "power.voile.hurt_sound.name": "Modify Hurt Sound Example",
+  "power.voile.hurt_sound.description": "You make a ghast noise when you get hurt.",
+  "power.voile.death_sound.name": "Modify Death Sound Example",
+  "power.voile.death_sound.description": "lol"
 }

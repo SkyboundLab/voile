@@ -48,6 +48,12 @@ public class VoilePowers {
             .add("scale", SerializableDataTypes.FLOAT),
             data -> (type, entity) -> new ModifyScalePower(type, entity, data.get("scale_types"), data.getFloat("scale")))
             .allowCondition());
+    public static final PowerFactory<Power> MODIFY_FOOTSTEP_SOUND = registerPower(new PowerFactory<>(Voile.id("modify_footstep_sound"), ModifySoundPower.getSerializableData(),
+            data -> (type, entity) -> new ModifyFootstepSoundPower(type, entity, data)).allowCondition());
+    public static final PowerFactory<Power> MODIFY_HURT_SOUND = registerPower(new PowerFactory<>(Voile.id("modify_hurt_sound"), ModifySoundPower.getSerializableData(),
+            data -> (type, entity) -> new ModifyHurtSoundPower(type, entity, data)).allowCondition());
+    public static final PowerFactory<Power> MODIFY_DEATH_SOUND = registerPower(new PowerFactory<>(Voile.id("modify_death_sound"), ModifySoundPower.getSerializableData(),
+            data -> (type, entity) -> new ModifyDeathSoundPower(type, entity, data)).allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);

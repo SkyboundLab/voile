@@ -1,0 +1,10 @@
+{
+  "type": "voile:modify_footstep_sound",
+  "sounds": [
+    "minecraft:block.anvil.place",
+    "minecraft:entity.iron_golem.hurt",
+    "minecraft:block.amethyst_block.step",
+    "minecraft:block.flowering_azalea.hit"
+  ],
+  "volume": 0.5
+}
