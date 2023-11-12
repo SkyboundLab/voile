@@ -22,50 +22,29 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.reimaden.voile.power.ModifyBehaviorPower;
-import net.reimaden.voile.util.BehaviorHelper;
 import net.reimaden.voile.util.EnchantmentUtil;
 import net.reimaden.voile.util.ModifiedDamageEnchantment;
 import org.apache.commons.lang3.mutable.MutableFloat;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Slice;
 
-@Mixin(MobEntity.class)
-public abstract class MobEntityMixin extends LivingEntity {
+@Mixin(PlayerEntity.class)
+public abstract class PlayerEntityMixin extends LivingEntity {
 
-    protected MobEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
+    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    @ModifyVariable(method = "setTarget", at = @At("HEAD"), argsOnly = true)
-    private LivingEntity voile$modifyTarget(LivingEntity target) {
-        if (this.getWorld().isClient() || !(target instanceof PlayerEntity)) {
-            return target;
-        }
-
-        BehaviorHelper behaviorHelper = new BehaviorHelper(target, this);
-
-        if (behaviorHelper.checkEntity()) {
-            if (behaviorHelper.behaviorMatches(ModifyBehaviorPower.EntityBehavior.PASSIVE)) {
-                return null;
-            }
-        }
-
-        return target;
-    }
-
-    @ModifyExpressionValue(method = "tryAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F"))
+    @ModifyExpressionValue(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F"))
     public float voidedAttackDamage(@SuppressWarnings("unused") float original) {
         return 0;
     }
 
-    @ModifyVariable(method = "tryAttack", slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F")), at = @At(value = "STORE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F"), ordinal = 0)
+    @ModifyVariable(method = "attack", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F"), ordinal = 0)
     private float voile$modifyAttackDamage(float original, Entity entity) {
         LivingEntity livingEntity = (LivingEntity) entity;
         ItemStack stack = this.getMainHandStack();

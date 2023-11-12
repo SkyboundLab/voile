@@ -11,7 +11,8 @@
     "voile:change_resource_with_effects",
     "voile:anvil_feet",
     "voile:hurt_sound",
-    "voile:death_sound"
+    "voile:death_sound",
+    "voile:weak_to_smite"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

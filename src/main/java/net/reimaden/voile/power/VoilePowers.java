@@ -54,6 +54,11 @@ public class VoilePowers {
             data -> (type, entity) -> new ModifyHurtSoundPower(type, entity, data)).allowCondition());
     public static final PowerFactory<Power> MODIFY_DEATH_SOUND = registerPower(new PowerFactory<>(Voile.id("modify_death_sound"), ModifySoundPower.getSerializableData(),
             data -> (type, entity) -> new ModifyDeathSoundPower(type, entity, data)).allowCondition());
+    public static final PowerFactory<Power> ENCHANTMENT_VULNERABILITY = registerPower(new PowerFactory<>(Voile.id("enchantment_vulnerability"), new SerializableData()
+            .add("enchantment", SerializableDataType.enumValue(EnchantmentVulnerabilityPower.Enchantment.class), null)
+            .add("enchantments", SerializableDataType.list(SerializableDataType.enumValue(EnchantmentVulnerabilityPower.Enchantment.class)), null),
+            data -> (type, entity) -> new EnchantmentVulnerabilityPower(type, entity, data))
+            .allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);

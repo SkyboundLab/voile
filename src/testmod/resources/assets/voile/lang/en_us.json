@@ -25,5 +25,7 @@
   "power.voile.hurt_sound.name": "Modify Hurt Sound Example",
   "power.voile.hurt_sound.description": "You make a ghast noise when you get hurt.",
   "power.voile.death_sound.name": "Modify Death Sound Example",
-  "power.voile.death_sound.description": "lol"
+  "power.voile.death_sound.description": "lol",
+  "power.voile.weak_to_smite.name": "Enchantment Vulnerability Example",
+  "power.voile.weak_to_smite.description": "You are weak to Smite as if you were undead."
 }
