@@ -25,12 +25,10 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.reimaden.voile.power.EnchantmentVulnerabilityPower;
-import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
 import java.util.function.BiConsumer;
 
-@ApiStatus.Internal
 public final class EnchantmentUtil {
 
     private EnchantmentUtil() {}
@@ -48,6 +46,6 @@ public final class EnchantmentUtil {
     }
 
     public static boolean isRightEnchantment(List<EnchantmentVulnerabilityPower> powers, Enchantment enchantment) {
-        return powers.stream().anyMatch(power -> power.getEnchantments().contains(enchantment));
+        return powers.stream().anyMatch(power -> power.containsEnchantment(enchantment));
     }
 }
