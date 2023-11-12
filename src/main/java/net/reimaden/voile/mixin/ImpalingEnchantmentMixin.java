@@ -21,6 +21,7 @@ package net.reimaden.voile.mixin;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.ImpalingEnchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityGroup;
@@ -44,7 +45,7 @@ public abstract class ImpalingEnchantmentMixin extends Enchantment implements Mo
     public float voile$getAttackDamage(int level, Entity entity) {
         List<EnchantmentVulnerabilityPower> powers = PowerHolderComponent.getPowers(entity, EnchantmentVulnerabilityPower.class);
 
-        if (EnchantmentUtil.isRightEnchantment(powers, EnchantmentVulnerabilityPower.Enchantment.IMPALING)) {
+        if (EnchantmentUtil.isRightEnchantment(powers, Enchantments.IMPALING)) {
             return (float) level * 2.5f;
         }
 

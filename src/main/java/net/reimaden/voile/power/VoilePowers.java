@@ -55,8 +55,8 @@ public class VoilePowers {
     public static final PowerFactory<Power> MODIFY_DEATH_SOUND = registerPower(new PowerFactory<>(Voile.id("modify_death_sound"), ModifySoundPower.getSerializableData(),
             data -> (type, entity) -> new ModifyDeathSoundPower(type, entity, data)).allowCondition());
     public static final PowerFactory<Power> ENCHANTMENT_VULNERABILITY = registerPower(new PowerFactory<>(Voile.id("enchantment_vulnerability"), new SerializableData()
-            .add("enchantment", SerializableDataType.enumValue(EnchantmentVulnerabilityPower.Enchantment.class), null)
-            .add("enchantments", SerializableDataType.list(SerializableDataType.enumValue(EnchantmentVulnerabilityPower.Enchantment.class)), null),
+            .add("enchantment", SerializableDataTypes.ENCHANTMENT, null)
+            .add("enchantments", SerializableDataType.list(SerializableDataTypes.ENCHANTMENT), null),
             data -> (type, entity) -> new EnchantmentVulnerabilityPower(type, entity, data))
             .allowCondition());
     public static final PowerFactory<Power> REVERSE_INSTANT_EFFECTS = registerPower(new PowerFactory<>(Voile.id("reverse_instant_effects"), new SerializableData(),

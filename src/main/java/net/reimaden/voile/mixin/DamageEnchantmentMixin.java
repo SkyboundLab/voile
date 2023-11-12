@@ -22,6 +22,7 @@ import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.enchantment.DamageEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EquipmentSlot;
@@ -55,8 +56,8 @@ public abstract class DamageEnchantmentMixin extends Enchantment implements Modi
         final float damage = (float) level * 2.5f;
 
         boolean hasRightEnchantment = switch (this.typeIndex) {
-            case 1 -> EnchantmentUtil.isRightEnchantment(powers, EnchantmentVulnerabilityPower.Enchantment.SMITE);
-            case 2 -> EnchantmentUtil.isRightEnchantment(powers, EnchantmentVulnerabilityPower.Enchantment.BANE_OF_ARTHROPODS);
+            case 1 -> EnchantmentUtil.isRightEnchantment(powers, Enchantments.SMITE);
+            case 2 -> EnchantmentUtil.isRightEnchantment(powers, Enchantments.BANE_OF_ARTHROPODS);
             default -> false;
         };
 
@@ -73,7 +74,7 @@ public abstract class DamageEnchantmentMixin extends Enchantment implements Modi
                 || this.typeIndex != 2 || level <= 0) return;
 
         List<EnchantmentVulnerabilityPower> powers = PowerHolderComponent.getPowers(livingEntity, EnchantmentVulnerabilityPower.class);
-        if (EnchantmentUtil.isRightEnchantment(powers, EnchantmentVulnerabilityPower.Enchantment.BANE_OF_ARTHROPODS)) {
+        if (EnchantmentUtil.isRightEnchantment(powers, Enchantments.BANE_OF_ARTHROPODS)) {
             int i = 20 + user.getRandom().nextInt(10 * level);
             livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, i, 3));
             ci.cancel();

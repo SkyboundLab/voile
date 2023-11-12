@@ -47,7 +47,7 @@ public final class EnchantmentUtil {
         }
     }
 
-    public static boolean isRightEnchantment(List<EnchantmentVulnerabilityPower> powers, EnchantmentVulnerabilityPower.Enchantment enchantment) {
+    public static boolean isRightEnchantment(List<EnchantmentVulnerabilityPower> powers, Enchantment enchantment) {
         return powers.stream().anyMatch(power -> power.getEnchantments().contains(enchantment));
     }
 }
