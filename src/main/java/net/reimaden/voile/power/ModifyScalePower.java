@@ -63,13 +63,13 @@ public class ModifyScalePower extends Power {
             if (data.getScale() != this.scale) {
                 data.setScale(this.scale);
             }
-        } else if (data.getScale() == DEFAULT_SCALE) {
+        } else if (data.getScale() != DEFAULT_SCALE) {
             data.setScale(DEFAULT_SCALE);
         }
     }
 
     @Override
     public void onLost() {
-        this.scaleTypes.forEach(scaleType -> scaleType.getScaleData(entity).setScale(DEFAULT_SCALE));
+        this.scaleTypes.forEach(scaleType -> scaleType.getScaleData(entity).resetScale());
     }
 }
