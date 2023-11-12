@@ -1,0 +1,9 @@
+{
+  "type": "voile:instant_effect_immunity",
+  "effect": "minecraft:instant_health",
+  "condition": {
+    "type": "voile:moon_phase",
+    "comparison": "!=",
+    "compare_to": 0
+  }
+}

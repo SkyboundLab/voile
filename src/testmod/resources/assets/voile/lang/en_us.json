@@ -27,5 +27,9 @@
   "power.voile.death_sound.name": "Modify Death Sound Example",
   "power.voile.death_sound.description": "lol",
   "power.voile.weak_to_smite.name": "Enchantment Vulnerability Example",
-  "power.voile.weak_to_smite.description": "You are weak to Smite as if you were undead."
+  "power.voile.weak_to_smite.description": "You are weak to Smite as if you were undead.",
+  "power.voile.reverse_instant_effects.name": "Reverse Instant Effects Example",
+  "power.voile.reverse_instant_effects.description": "Instant effects are reversed on you.",
+  "power.voile.instant_effect_immunity.name": "Instant Effect Immunity Example",
+  "power.voile.instant_effect_immunity.description": "You are immune to Instant Health when it's not a full moon."
 }

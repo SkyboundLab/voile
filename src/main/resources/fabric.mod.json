@@ -1,50 +1,51 @@
 {
-	"schemaVersion": 1,
-	"id": "voile",
-	"version": "${version}",
-	"name": "Voile",
-	"description": "An addon for Apoli to provide more functionality.",
-	"authors": [
-		"Maxmani"
-	],
-	"contributors": [
-		"wasa"
-	],
-	"contact": {
-		"sources": "https://github.com/Maxmani/voile",
-		"issues": "https://github.com/Maxmani/voile/issues"
-	},
-	"license": "LGPL-3.0-or-later",
-	"icon": "assets/voile/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-          "net.reimaden.voile.Voile"
-		]
-	},
-	"mixins": [
-		"voile.mixins.json",
-		{
-			"config": "voile.client.mixins.json",
-			"environment": "client"
-		}
-	],
-	"depends": {
-		"fabricloader": ">=0.14",
-		"minecraft": "~1.20",
-		"java": ">=17",
-		"fabric-api": "*",
-		"apoli": ">=2.9.0",
-		"pehkui": ">=3.7.6"
-	},
-	"custom": {
-		"modmenu": {
-			"links": {
-				"modmenu.discord": "https://discord.gg/WESu6XEcF7"
-			},
-			"badges": [
-				"library"
-			]
-		}
-	}
+  "schemaVersion": 1,
+  "id": "voile",
+  "version": "${version}",
+  "name": "Voile",
+  "description": "An addon for Apoli to provide more functionality.",
+  "authors": [
+    "Maxmani"
+  ],
+  "contributors": [
+    "wasa"
+  ],
+  "contact": {
+    "sources": "https://github.com/Maxmani/voile",
+    "issues": "https://github.com/Maxmani/voile/issues"
+  },
+  "license": "LGPL-3.0-or-later",
+  "icon": "assets/voile/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.reimaden.voile.Voile"
+    ]
+  },
+  "mixins": [
+    "voile.mixins.json",
+    {
+      "config": "voile.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.14",
+    "minecraft": "~1.20",
+    "java": ">=17",
+    "fabric-api": "*",
+    "apoli": ">=2.9.0",
+    "pehkui": ">=3.7.6"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/WESu6XEcF7"
+      },
+      "badges": [
+        "library"
+      ]
+    }
+  },
+  "accessWidener" : "voile.accesswidener"
 }

@@ -41,6 +41,8 @@ repositories {
 loom {
     splitEnvironmentSourceSets()
 
+	accessWidenerPath = file("src/main/resources/voile.accesswidener")
+
 	sourceSets {
 		testmod {
 			compileClasspath += main.compileClasspath

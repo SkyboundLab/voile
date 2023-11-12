@@ -59,6 +59,14 @@ public class VoilePowers {
             .add("enchantments", SerializableDataType.list(SerializableDataType.enumValue(EnchantmentVulnerabilityPower.Enchantment.class)), null),
             data -> (type, entity) -> new EnchantmentVulnerabilityPower(type, entity, data))
             .allowCondition());
+    public static final PowerFactory<Power> REVERSE_INSTANT_EFFECTS = registerPower(new PowerFactory<>(Voile.id("reverse_instant_effects"), new SerializableData(),
+            data -> ReverseInstantEffectsPower::new))
+            .allowCondition();
+    public static final PowerFactory<Power> INSTANT_EFFECT_IMMUNITY = registerPower(new PowerFactory<>(Voile.id("instant_effect_immunity"), new SerializableData()
+            .add("effect", SerializableDataTypes.STATUS_EFFECT, null)
+            .add("effects", SerializableDataTypes.STATUS_EFFECTS, null),
+            data -> (type, entity) -> new InstantEffectImmunityPower(type, entity, data))
+            .allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);

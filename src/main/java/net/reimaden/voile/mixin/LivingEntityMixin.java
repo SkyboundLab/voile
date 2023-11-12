@@ -29,10 +29,12 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.World;
 import net.reimaden.voile.power.ModifyDeathSoundPower;
 import net.reimaden.voile.power.ModifyHurtSoundPower;
+import net.reimaden.voile.power.ReverseInstantEffectsPower;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
@@ -66,5 +68,10 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
         powers.forEach(power -> power.playSound(this));
 
         ci.cancel();
+    }
+
+    @Inject(method = "isUndead", at = @At("RETURN"), cancellable = true)
+    private void voile$reverseInstantEffects(CallbackInfoReturnable<Boolean> cir) {
+        if (PowerHolderComponent.hasPower(this, ReverseInstantEffectsPower.class)) cir.setReturnValue(!cir.getReturnValue());
     }
 }

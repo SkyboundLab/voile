@@ -12,7 +12,9 @@
     "voile:anvil_feet",
     "voile:hurt_sound",
     "voile:death_sound",
-    "voile:weak_to_smite"
+    "voile:weak_to_smite",
+    "voile:reverse_instant_effects",
+    "voile:instant_effect_immunity"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,
