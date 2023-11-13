@@ -72,4 +72,12 @@ public class ModifyScalePower extends Power {
     public void onLost() {
         this.scaleTypes.forEach(scaleType -> scaleType.getScaleData(entity).resetScale());
     }
+
+    @Override
+    public void onAdded() {
+        ScaleRegistries.SCALE_TYPES.values().stream()
+                .filter(scaleType -> !this.scaleTypes.contains(scaleType))
+                .filter(scaleType -> !scaleType.getScaleData(entity).shouldPersist())
+                .forEach(scaleType -> scaleType.getScaleData(entity).resetScale());
+    }
 }
