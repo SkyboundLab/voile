@@ -41,7 +41,6 @@ public class ModifyScalePower extends Power {
         add(ScaleRegistries.getId(ScaleRegistries.SCALE_TYPES, ScaleTypes.VISIBILITY));
     }};
 
-    private static final int DEFAULT_SCALE = 1;
     private final Set<ScaleType> scaleTypes = new HashSet<>();
     private final float scale;
 
@@ -59,12 +58,13 @@ public class ModifyScalePower extends Power {
 
     private void updateScale(ScaleType scaleType) {
         ScaleData data = scaleType.getScaleData(entity);
+
         if (this.isActive()) {
             if (data.getScale() != this.scale) {
                 data.setScale(this.scale);
             }
-        } else if (data.getScale() != DEFAULT_SCALE) {
-            data.setScale(DEFAULT_SCALE);
+        } else if (data.getScale() != scaleType.getDefaultBaseScale()) {
+            data.resetScale();
         }
     }
 
