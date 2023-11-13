@@ -64,7 +64,8 @@ public class VoilePowers {
             .allowCondition();
     public static final PowerFactory<Power> INSTANT_EFFECT_IMMUNITY = registerPower(new PowerFactory<>(Voile.id("instant_effect_immunity"), new SerializableData()
             .add("effect", SerializableDataTypes.STATUS_EFFECT, null)
-            .add("effects", SerializableDataTypes.STATUS_EFFECTS, null),
+            .add("effects", SerializableDataTypes.STATUS_EFFECTS, null)
+            .add("inverted", SerializableDataTypes.BOOLEAN, false),
             data -> (type, entity) -> new InstantEffectImmunityPower(type, entity, data))
             .allowCondition());
 

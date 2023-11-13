@@ -29,18 +29,20 @@ import java.util.HashSet;
 public class InstantEffectImmunityPower extends Power {
 
     private final HashSet<StatusEffect> effects = new HashSet<>();
+    private final boolean inverted;
 
-    public InstantEffectImmunityPower(PowerType<?> type, LivingEntity entity) {
+    public InstantEffectImmunityPower(PowerType<?> type, LivingEntity entity, boolean inverted) {
         super(type, entity);
+        this.inverted = inverted;
     }
 
     public InstantEffectImmunityPower(PowerType<?> type, LivingEntity living, SerializableData.Instance data) {
-        this(type, living);
+        this(type, living, data.getBoolean("inverted"));
         if (data.isPresent("effect")) this.effects.add(data.get("effect"));
         if (data.isPresent("effects")) this.effects.addAll(data.get("effects"));
     }
 
     public boolean containsEffect(StatusEffect effect) {
-        return this.effects.contains(effect);
+        return this.inverted ^ this.effects.contains(effect);
     }
 }
