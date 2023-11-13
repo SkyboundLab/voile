@@ -1,6 +1,6 @@
 # Voile
 
-Voile is an addon for [Apoli](https://github.com/apace100/apoli) that provides new power and condition types.
+Voile is an addon for [Apoli](https://github.com/apace100/apoli) that provides new power, action and condition types.
 
 ## Documentation
 
@@ -12,7 +12,7 @@ Prior experience with either mod is recommended. You can find the Origins docume
 ### For Data Pack Developers
 
 Using Voile for your data pack is easy. Simply download the latest jar for your version of Minecraft from the releases page (Modrinth and CurseForge soon)
-and include it in your instance's `mods` folder. You can then use the power and condition types in your data pack.
+and include it in your instance's `mods` folder. You can then use the new types in your data pack.
 
 Voile depends on Apoli, so make sure to grab that as well. Apoli is included with Origins.
 
