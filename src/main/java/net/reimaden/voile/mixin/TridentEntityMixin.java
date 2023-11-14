@@ -38,7 +38,8 @@ public class TridentEntityMixin {
 
     @ModifyVariable(method = "onEntityHit", slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F")), at = @At(value = "STORE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F"), ordinal = 0)
     private float voile$modifyAttackDamage(float original, EntityHitResult entityHitResult) {
-        LivingEntity livingEntity = (LivingEntity) entityHitResult.getEntity();
+        if (!(entityHitResult.getEntity() instanceof LivingEntity livingEntity)) return original;
+
         MutableFloat mut = new MutableFloat(original);
 
         EnchantmentUtil.forEachEnchantment(this.tridentStack, (enchantment, level) -> {

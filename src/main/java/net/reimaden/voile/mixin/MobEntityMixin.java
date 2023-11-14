@@ -67,7 +67,8 @@ public abstract class MobEntityMixin extends LivingEntity {
 
     @ModifyVariable(method = "tryAttack", slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F")), at = @At(value = "STORE", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getAttackDamage(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityGroup;)F"), ordinal = 0)
     private float voile$modifyAttackDamage(float original, Entity entity) {
-        LivingEntity livingEntity = (LivingEntity) entity;
+        if (!(entity instanceof LivingEntity livingEntity)) return original;
+
         ItemStack stack = this.getMainHandStack();
         MutableFloat mut = new MutableFloat(original);
 
