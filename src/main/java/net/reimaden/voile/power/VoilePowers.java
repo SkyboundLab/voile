@@ -68,6 +68,13 @@ public class VoilePowers {
             .add("inverted", SerializableDataTypes.BOOLEAN, false),
             data -> (type, entity) -> new InstantEffectImmunityPower(type, entity, data))
             .allowCondition());
+    public static final PowerFactory<Power> CONVERT_ENTITY = registerPower(new PowerFactory<>(Voile.id("convert_entity"), new SerializableData()
+            .add("entity_condition", ApoliDataTypes.ENTITY_CONDITION, null)
+            .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null)
+            .add("convert_to", SerializableDataTypes.ENTITY_TYPE)
+            .add("ignore_difficulty", SerializableDataTypes.BOOLEAN, true),
+            data -> (type, entity) -> new ConvertEntityPower(type, entity, data.get("entity_condition"), data.get("bientity_condition"), data.get("convert_to"), data.getBoolean("ignore_difficulty")))
+            .allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);

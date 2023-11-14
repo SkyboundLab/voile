@@ -31,5 +31,7 @@
   "power.voile.reverse_instant_effects.name": "Reverse Instant Effects Example",
   "power.voile.reverse_instant_effects.description": "Instant effects are reversed on you.",
   "power.voile.instant_effect_immunity.name": "Instant Effect Immunity Example",
-  "power.voile.instant_effect_immunity.description": "You are immune to Instant Health when it's not a full moon."
+  "power.voile.instant_effect_immunity.description": "You are immune to Instant Health when it's not a full moon.",
+  "power.voile.convert_chickens_to_cows.name": "Convert Entity Example",
+  "power.voile.convert_chickens_to_cows.description": "You convert chickens to cows upon killing them."
 }

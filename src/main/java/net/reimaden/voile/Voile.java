@@ -23,6 +23,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 import net.reimaden.voile.action.VoileActions;
 import net.reimaden.voile.condition.VoileConditions;
+import net.reimaden.voile.event.VoileEvents;
 import net.reimaden.voile.power.VoilePowers;
 import org.jetbrains.annotations.ApiStatus;
 import org.slf4j.Logger;
@@ -42,6 +43,7 @@ public class Voile implements ModInitializer {
 		VoilePowers.register();
 		VoileConditions.register();
 		VoileActions.register();
+		VoileEvents.register();
 
 		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
 			VERSION = modContainer.getMetadata().getVersion().getFriendlyString();

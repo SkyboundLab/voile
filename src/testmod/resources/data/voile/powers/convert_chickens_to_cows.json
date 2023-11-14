@@ -1,0 +1,8 @@
+{
+  "type": "voile:convert_entity",
+  "entity_condition": {
+    "type": "apoli:entity_type",
+    "entity_type": "minecraft:chicken"
+  },
+  "convert_to": "minecraft:cow"
+}
