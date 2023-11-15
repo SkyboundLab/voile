@@ -24,10 +24,12 @@ import io.github.apace100.apoli.registry.ApoliRegistries;
 import io.github.apace100.apoli.util.Comparison;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
+import net.minecraft.block.pattern.CachedBlockPosition;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Pair;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.reimaden.voile.Voile;
 
@@ -39,6 +41,12 @@ public class VoileConditions {
             .add("comparison", ApoliDataTypes.COMPARISON)
             .add("compare_to", SerializableDataTypes.INT),
             (data, entity) -> ((Comparison) data.get("comparison")).compare(entity.getWorld().getMoonPhase(), data.getInt("compare_to"))));
+    @SuppressWarnings("unchecked") // Copy of Apoli's On Block condition with more precision
+    public static final ConditionFactory<Entity> PRECISE_ON_BLOCK = registerEntityCondition(new ConditionFactory<>(Voile.id("precise_on_block"), new SerializableData()
+            .add("block_condition", ApoliDataTypes.BLOCK_CONDITION, null),
+            (data, entity) -> entity.isOnGround() &&
+                    (!data.isPresent("block_condition") || (((ConditionFactory<CachedBlockPosition>.Instance)data.get("block_condition")).test(
+                            new CachedBlockPosition(entity.getWorld(), BlockPos.ofFloored(entity.getX(), entity.getBoundingBox().minY - 0.0000001D, entity.getZ()), true))))));
 
     // Item Conditions
     public static final ConditionFactory<Pair<World, ItemStack>> ENCHANTABILITY = registerItemCondition(new ConditionFactory<>(Voile.id("enchantability"), new SerializableData()
