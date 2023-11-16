@@ -75,6 +75,10 @@ public class VoilePowers {
             .add("ignore_difficulty", SerializableDataTypes.BOOLEAN, true),
             data -> (type, entity) -> new ConvertEntityPower(type, entity, data.get("entity_condition"), data.get("bientity_condition"), data.get("convert_to"), data.getBoolean("ignore_difficulty")))
             .allowCondition());
+    public static final PowerFactory<Power> MODIFY_DIVERGENCE = registerPower(new PowerFactory<>(Voile.id("modify_divergence"), new SerializableData()
+            .add("divergence", SerializableDataTypes.FLOAT),
+            data -> (type, entity) -> new ModifyDivergencePower(type, entity, data.getFloat("divergence")))
+            .allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);

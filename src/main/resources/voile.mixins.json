@@ -28,6 +28,7 @@
     "PiglinBruteBrainMixin",
     "PlayerEntityMixin",
     "PolarBearEntityMixin",
+    "ProjectileEntityMixin",
     "PufferFishEntityMixin",
     "SnowGolemEntityMixin",
     "SpiderEntityMixin",

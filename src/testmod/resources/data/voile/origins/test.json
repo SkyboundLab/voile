@@ -15,7 +15,8 @@
     "voile:weak_to_smite",
     "voile:reverse_instant_effects",
     "voile:instant_effect_immunity",
-    "voile:convert_chickens_to_cows"
+    "voile:convert_chickens_to_cows",
+    "voile:inaccurate_projectiles"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,
