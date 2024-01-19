@@ -38,7 +38,7 @@ public class EscapeDangerGoalMixin {
         BehaviorHelper behaviorHelper = new BehaviorHelper(this.mob.getAttacker(), this.mob);
 
         if (behaviorHelper.checkEntity()) {
-            if (behaviorHelper.hostileOrPassive()) {
+            if (behaviorHelper.neutralOrPassive()) {
                 cir.setReturnValue(false);
             }
         }

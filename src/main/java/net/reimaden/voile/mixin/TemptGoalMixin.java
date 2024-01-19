@@ -41,7 +41,7 @@ public class TemptGoalMixin {
         BehaviorHelper behaviorHelper = new BehaviorHelper(this.closestPlayer, this.mob);
 
         if (behaviorHelper.checkEntity()) {
-            if (behaviorHelper.hostileOrPassive()) {
+            if (behaviorHelper.neutralOrPassive()) {
                 cir.setReturnValue(false);
             }
         }

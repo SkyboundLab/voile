@@ -73,14 +73,6 @@ public class BehaviorHelper {
     }
 
     /**
-     * Checks if the Modify Behavior power's desired behavior is not neutral.
-     * @return True if either hostile or passive.
-     */
-    public boolean hostileOrPassive() {
-        return this.behaviorMatches(ModifyBehaviorPower.EntityBehavior.HOSTILE) || this.behaviorMatches(ModifyBehaviorPower.EntityBehavior.PASSIVE);
-    }
-
-    /**
      * Checks if the Modify Behavior power's desired behavior is not neutral or passive, but also isn't explicitly hostile.
      * @return True if neither neutral nor passive is set.
      */
