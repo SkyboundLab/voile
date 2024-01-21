@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -40,10 +40,19 @@ public class VoileActions {
             .add("operation", ApoliDataTypes.RESOURCE_OPERATION, ResourceOperation.ADD),
             ChangeResourceWithStatusEffectsAction::action)
     );
+    public static final ActionFactory<Entity> DISABLE_SHIELD = registerEntityAction(new ActionFactory<>(Voile.id("disable_shield"), new SerializableData(),
+            DisableShieldAction::action)
+    );
 
     private static ActionFactory<Entity> registerEntityAction(ActionFactory<Entity> factory) {
         return Registry.register(ApoliRegistries.ENTITY_ACTION, factory.getSerializerId(), factory);
     }
+
+    /* noinspection
+    private static ActionFactory<Pair<Entity, Entity>> registerBiEntityAction(ActionFactory<Pair<Entity, Entity>> factory) {
+        return Registry.register(ApoliRegistries.BIENTITY_ACTION, factory.getSerializerId(), factory);
+    }
+     */
 
     public static void register() {
         Voile.LOGGER.debug("Registering actions for " + Voile.MOD_ID);

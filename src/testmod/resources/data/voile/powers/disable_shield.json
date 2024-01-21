@@ -1,0 +1,16 @@
+{
+  "type": "apoli:action_on_entity_use",
+  "bientity_action": {
+    "type": "apoli:target_action",
+    "action": {
+      "type": "voile:disable_shield"
+    }
+  },
+  "bientity_condition": {
+    "type": "apoli:actor_condition",
+    "condition": {
+      "type": "apoli:entity_type",
+      "entity_type": "minecraft:player"
+    }
+  }
+}
