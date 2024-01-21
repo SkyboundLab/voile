@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -18,12 +18,14 @@
 
 package net.reimaden.voile.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
 import net.reimaden.voile.power.ModifyFootstepSoundPower;
+import net.reimaden.voile.power.PreventSprintingParticlesPower;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -45,5 +47,14 @@ public abstract class EntityMixin {
         powers.forEach(power -> power.playSound(entity));
 
         ci.cancel();
+    }
+
+    @ModifyReturnValue(method = "shouldSpawnSprintingParticles", at = @At("TAIL"))
+    private boolean voile$preventSprintingParticles(boolean original) {
+        if (PowerHolderComponent.hasPower((Entity) (Object) this, PreventSprintingParticlesPower.class)) {
+            return false;
+        }
+
+        return original;
     }
 }

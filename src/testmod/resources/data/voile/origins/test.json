@@ -16,7 +16,8 @@
     "voile:reverse_instant_effects",
     "voile:instant_effect_immunity",
     "voile:convert_chickens_to_cows",
-    "voile:inaccurate_projectiles"
+    "voile:inaccurate_projectiles",
+    "voile:no_particles"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

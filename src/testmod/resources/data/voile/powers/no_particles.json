@@ -1,0 +1,6 @@
+{
+  "type": "voile:prevent_sprinting_particles",
+  "condition": {
+    "type": "apoli:in_rain"
+  }
+}

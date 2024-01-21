@@ -35,5 +35,7 @@
   "power.voile.convert_chickens_to_cows.name": "Convert Entity Example",
   "power.voile.convert_chickens_to_cows.description": "You convert chickens to cows upon killing them.",
   "power.voile.inaccurate_projectiles.name": "Modify Divergence Example",
-  "power.voile.inaccurate_projectiles.description": "Your projectiles are inaccurate."
+  "power.voile.inaccurate_projectiles.description": "Your projectiles are inaccurate.",
+  "power.voile.no_particles.name": "Prevent Sprinting Particles Example",
+  "power.voile.no_particles.description": "Sprinting particles do not appear while it's raining."
 }

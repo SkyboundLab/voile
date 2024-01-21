@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -79,6 +79,9 @@ public class VoilePowers {
             .add("divergence", SerializableDataTypes.FLOAT),
             data -> (type, entity) -> new ModifyDivergencePower(type, entity, data.getFloat("divergence")))
             .allowCondition());
+    public static final PowerFactory<Power> PREVENT_SPRINTING_PARTICLES = registerPower(new PowerFactory<>(Voile.id("prevent_sprinting_particles"), new SerializableData(),
+            data -> PreventSprintingParticlesPower::new))
+            .allowCondition();
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);
