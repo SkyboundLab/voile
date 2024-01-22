@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -27,6 +27,7 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.block.pattern.CachedBlockPosition;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
@@ -57,6 +58,14 @@ public class VoileConditions {
                 int enchantability = stack.getItem().getEnchantability();
 
                 return ((Comparison) data.get("comparison")).compare(enchantability, data.getInt("compare_to"));
+            }));
+    public static final ConditionFactory<Pair<World, ItemStack>> CRAFTABLE = registerItemCondition(new ConditionFactory<>(Voile.id("craftable"), new SerializableData(),
+            (data, pair) -> {
+                World world = pair.getLeft();
+                ItemStack stack = pair.getRight();
+
+                return world.getRecipeManager().listAllOfType(RecipeType.CRAFTING).stream()
+                        .anyMatch(recipe -> recipe.value().getResult(world.getRegistryManager()).isOf(stack.getItem()));
             }));
 
     private static ConditionFactory<Entity> registerEntityCondition(ConditionFactory<Entity> factory) {

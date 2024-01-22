@@ -41,5 +41,7 @@
   "power.voile.disable_shield.name": "Disable Shield Example",
   "power.voile.disable_shield.description": "You can press use on a player to disable their shield.",
   "power.voile.disable_shields.name": "Disable Shields Example",
-  "power.voile.disable_shields.description": "Your attacks disable shields while under the effect of Strength."
+  "power.voile.disable_shields.description": "Your attacks disable shields while under the effect of Strength.",
+  "power.voile.craftable_items.name": "Craftable Example",
+  "power.voile.craftable_items.description": "You can't pick up items that are craftable."
 }

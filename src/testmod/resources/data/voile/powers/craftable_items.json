@@ -1,0 +1,6 @@
+{
+  "type": "apoli:prevent_item_pickup",
+  "item_condition": {
+    "type": "voile:craftable"
+  }
+}
