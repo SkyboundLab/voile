@@ -39,5 +39,7 @@
   "power.voile.no_particles.name": "Prevent Sprinting Particles Example",
   "power.voile.no_particles.description": "Sprinting particles do not appear while it's raining.",
   "power.voile.disable_shield.name": "Disable Shield Example",
-  "power.voile.disable_shield.description": "You can press use on a player to disable their shield."
+  "power.voile.disable_shield.description": "You can press use on a player to disable their shield.",
+  "power.voile.disable_shields.name": "Disable Shields Example",
+  "power.voile.disable_shields.description": "Your attacks disable shields while under the effect of Strength."
 }

@@ -18,7 +18,8 @@
     "voile:convert_chickens_to_cows",
     "voile:inaccurate_projectiles",
     "voile:no_particles",
-    "voile:disable_shield"
+    "voile:disable_shield",
+    "voile:disable_shields"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

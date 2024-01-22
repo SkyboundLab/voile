@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -18,6 +18,7 @@
 
 package net.reimaden.voile.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.entity.Attackable;
@@ -27,6 +28,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.World;
+import net.reimaden.voile.power.DisableShieldsPower;
 import net.reimaden.voile.power.ModifyDeathSoundPower;
 import net.reimaden.voile.power.ModifyHurtSoundPower;
 import net.reimaden.voile.power.ReverseInstantEffectsPower;
@@ -73,5 +75,10 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     @Inject(method = "isUndead", at = @At("RETURN"), cancellable = true)
     private void voile$reverseInstantEffects(CallbackInfoReturnable<Boolean> cir) {
         if (PowerHolderComponent.hasPower(this, ReverseInstantEffectsPower.class)) cir.setReturnValue(!cir.getReturnValue());
+    }
+
+    @ModifyReturnValue(method = "disablesShield", at = @At("TAIL"))
+    private boolean voile$hasDisableShieldsPower(boolean original) {
+        return original || PowerHolderComponent.hasPower(this, DisableShieldsPower.class);
     }
 }

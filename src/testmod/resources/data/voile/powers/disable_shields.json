@@ -1,0 +1,7 @@
+{
+  "type": "voile:disable_shields",
+  "condition": {
+    "type": "apoli:status_effect",
+    "effect": "minecraft:strength"
+  }
+}

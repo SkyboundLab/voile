@@ -82,6 +82,9 @@ public class VoilePowers {
     public static final PowerFactory<Power> PREVENT_SPRINTING_PARTICLES = registerPower(new PowerFactory<>(Voile.id("prevent_sprinting_particles"), new SerializableData(),
             data -> PreventSprintingParticlesPower::new))
             .allowCondition();
+    public static final PowerFactory<Power> DISABLE_SHIELDS = registerPower(new PowerFactory<>(Voile.id("disable_shields"), new SerializableData(),
+            data -> DisableShieldsPower::new))
+            .allowCondition();
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);
