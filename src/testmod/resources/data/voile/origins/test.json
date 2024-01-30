@@ -20,7 +20,8 @@
     "voile:no_particles",
     "voile:disable_shield",
     "voile:disable_shields",
-    "voile:craftable_items"
+    "voile:craftable_items",
+    "voile:knock_back_attacker"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

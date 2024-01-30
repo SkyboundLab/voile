@@ -22,6 +22,7 @@ import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.factory.PowerFactory;
 import io.github.apace100.apoli.registry.ApoliRegistries;
+import io.github.apace100.apoli.util.HudRender;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataType;
 import io.github.apace100.calio.data.SerializableDataTypes;
@@ -38,7 +39,7 @@ public class VoilePowers {
             .add("behavior", SerializableDataType.enumValue(ModifyBehaviorPower.EntityBehavior.class))
             .add("entity_condition", ApoliDataTypes.ENTITY_CONDITION, null)
             .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
-            data -> (type, player) -> new ModifyBehaviorPower(type, player, data.get("behavior"), data.get("entity_condition"), data.get("bientity_condition")))
+            data -> (type, entity) -> new ModifyBehaviorPower(type, entity, data.get("behavior"), data.get("entity_condition"), data.get("bientity_condition")))
             .allowCondition());
     public static final PowerFactory<Power> FLIP_MODEL = registerPower(new PowerFactory<>(Voile.id("flip_model"), new SerializableData(),
             data -> FlipModelPower::new))
@@ -85,6 +86,14 @@ public class VoilePowers {
     public static final PowerFactory<Power> DISABLE_SHIELDS = registerPower(new PowerFactory<>(Voile.id("disable_shields"), new SerializableData(),
             data -> DisableShieldsPower::new))
             .allowCondition();
+    public static final PowerFactory<Power> ACTION_ON_BLOCK = registerPower(new PowerFactory<>(Voile.id("action_on_block"), new SerializableData()
+            .add("bientity_action", ApoliDataTypes.BIENTITY_ACTION)
+            .add("damage_condition", ApoliDataTypes.DAMAGE_CONDITION, null)
+            .add("cooldown", SerializableDataTypes.INT, 1)
+            .add("hud_render", ApoliDataTypes.HUD_RENDER, HudRender.DONT_RENDER)
+            .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
+            data -> (type, entity) -> new ActionOnBlockPower(type, entity, data.getInt("cooldown"), data.get("hud_render"), data.get("damage_condition"), data.get("bientity_action"), data.get("bientity_condition")))
+            .allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);

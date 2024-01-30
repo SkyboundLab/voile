@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -40,10 +40,9 @@ import java.util.Optional;
 public class ConvertEntityEvent implements ServerLivingEntityEvents.AllowDeath {
 
     @Override
-    public boolean allowDeath(LivingEntity entity, DamageSource damageSource, float damageAmount) {
-        // We already know the attacker is a living entity
-        LivingEntity killer = (LivingEntity) damageSource.getAttacker();
-        if (killer == null || !(entity instanceof MobEntity mobEntity) || killer instanceof ZombieEntity) return true;
+    public boolean allowDeath(LivingEntity entity, DamageSource source, float amount) {
+        if (!(source.getAttacker() instanceof LivingEntity killer)) return true;
+        if (!(entity instanceof MobEntity mobEntity) || killer instanceof ZombieEntity) return true;
 
         Optional<ConvertEntityPower> convertEntityPower = PowerHolderComponent.getPowers(killer, ConvertEntityPower.class).stream()
                 .filter(power -> power.checkEntity(mobEntity)).findFirst();

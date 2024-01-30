@@ -26,12 +26,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.World;
-import net.reimaden.voile.power.DisableShieldsPower;
-import net.reimaden.voile.power.ModifyDeathSoundPower;
-import net.reimaden.voile.power.ModifyHurtSoundPower;
-import net.reimaden.voile.power.ReverseInstantEffectsPower;
+import net.reimaden.voile.power.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -40,7 +38,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@SuppressWarnings("unused")
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity implements Attackable {
 
@@ -80,5 +77,17 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     @ModifyReturnValue(method = "disablesShield", at = @At("TAIL"))
     private boolean voile$hasDisableShieldsPower(boolean original) {
         return original || PowerHolderComponent.hasPower(this, DisableShieldsPower.class);
+    }
+
+    @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;damageShield(F)V"))
+    private void voile$invokeBlockActions(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        Entity attacker = source.getSource();
+
+        if (attacker instanceof ProjectileEntity projectile) {
+            Entity owner = projectile.getOwner();
+            PowerHolderComponent.withPowers(this, ActionOnBlockPower.class, power -> true, power -> power.onBlock(owner, source, amount));
+        } else {
+            PowerHolderComponent.withPowers(this, ActionOnBlockPower.class, power -> true, power -> power.onBlock(attacker, source, amount));
+        }
     }
 }

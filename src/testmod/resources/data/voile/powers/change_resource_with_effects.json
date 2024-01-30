@@ -9,7 +9,7 @@
     }
   },
   "update": {
-    "type": "origins:action_over_time",
+    "type": "apoli:action_over_time",
     "entity_action": {
       "type": "voile:change_resource_with_status_effects",
       "resource": "*:*_resource",
