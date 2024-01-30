@@ -1,0 +1,7 @@
+{
+  "type": "voile:water_breathing",
+  "condition": {
+    "type": "apoli:daytime",
+    "inverted": true
+  }
+}

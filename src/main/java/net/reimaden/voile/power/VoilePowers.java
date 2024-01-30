@@ -99,6 +99,9 @@ public class VoilePowers {
             .add("can_start_sprinting", SerializableDataTypes.BOOLEAN, true),
             data -> (type, entity) -> new PreventItemSlowdownPower(type, entity, data.get("item_condition"), data.getBoolean("can_start_sprinting")))
             .allowCondition());
+    public static final PowerFactory<Power> WATER_BREATHING = registerPower(new PowerFactory<>(Voile.id("water_breathing"), new SerializableData(),
+            data -> WaterBreathingPower::new))
+            .allowCondition();
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);

@@ -90,4 +90,9 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
             PowerHolderComponent.withPowers(this, ActionOnBlockPower.class, power -> true, power -> power.onBlock(attacker, source, amount));
         }
     }
+
+    @ModifyReturnValue(method = "canBreatheInWater", at = @At("TAIL"))
+    private boolean voile$hasWaterBreathingPower(boolean original) {
+        return original || PowerHolderComponent.hasPower(this, WaterBreathingPower.class);
+    }
 }
