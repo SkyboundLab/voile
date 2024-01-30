@@ -1,0 +1,6 @@
+{
+  "type": "voile:prevent_item_slowdown",
+  "item_condition": {
+    "type": "apoli:food"
+  }
+}

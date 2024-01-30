@@ -45,5 +45,7 @@
   "power.voile.craftable_items.name": "Craftable Example",
   "power.voile.craftable_items.description": "You can't pick up items that are craftable.",
   "power.voile.knock_back_attacker.name": "Action On Block Example",
-  "power.voile.knock_back_attacker.description": "When blocking with a shield, you knock back the attacker."
+  "power.voile.knock_back_attacker.description": "When blocking with a shield, you knock back the attacker.",
+  "power.voile.no_food_slowdown.name": "Prevent Item Slowdown Example",
+  "power.voile.no_food_slowdown.description": "Eating food does not slow you down."
 }

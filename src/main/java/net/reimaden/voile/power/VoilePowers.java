@@ -94,6 +94,11 @@ public class VoilePowers {
             .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
             data -> (type, entity) -> new ActionOnBlockPower(type, entity, data.getInt("cooldown"), data.get("hud_render"), data.get("damage_condition"), data.get("bientity_action"), data.get("bientity_condition")))
             .allowCondition());
+    public static final PowerFactory<Power> PREVENT_ITEM_SLOWDOWN = registerPower(new PowerFactory<>(Voile.id("prevent_item_slowdown"), new SerializableData()
+            .add("item_condition", ApoliDataTypes.ITEM_CONDITION, null)
+            .add("can_start_sprinting", SerializableDataTypes.BOOLEAN, true),
+            data -> (type, entity) -> new PreventItemSlowdownPower(type, entity, data.get("item_condition"), data.getBoolean("can_start_sprinting")))
+            .allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);
