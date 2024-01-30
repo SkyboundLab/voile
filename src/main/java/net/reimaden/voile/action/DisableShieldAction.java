@@ -19,9 +19,9 @@
 package net.reimaden.voile.action;
 
 import io.github.apace100.calio.data.SerializableData;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Items;
 
 public class DisableShieldAction {
 
@@ -32,7 +32,7 @@ public class DisableShieldAction {
         if (!(entity instanceof PlayerEntity player)) return;
 
         // Make sure the player is actually using a shield
-        if (player.getActiveItem().isOf(Items.SHIELD)) {
+        if (player.getActiveItem().isIn(ConventionalItemTags.SHIELDS)) {
             player.disableShield(true);
         }
     }
