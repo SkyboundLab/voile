@@ -49,5 +49,7 @@
   "power.voile.no_food_slowdown.name": "Prevent Item Slowdown Example",
   "power.voile.no_food_slowdown.description": "Eating food does not slow you down.",
   "power.voile.water_breathing.name": "Water Breathing Example",
-  "power.voile.water_breathing.description": "You can breathe underwater during the night."
+  "power.voile.water_breathing.description": "You can breathe underwater during the night.",
+  "power.voile.nearby_boats.name": "Nearby Entities Example",
+  "power.voile.nearby_boats.description": "You heal when near boats."
 }

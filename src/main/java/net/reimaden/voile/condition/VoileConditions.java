@@ -46,8 +46,23 @@ public class VoileConditions {
     public static final ConditionFactory<Entity> PRECISE_ON_BLOCK = registerEntityCondition(new ConditionFactory<>(Voile.id("precise_on_block"), new SerializableData()
             .add("block_condition", ApoliDataTypes.BLOCK_CONDITION, null),
             (data, entity) -> entity.isOnGround() &&
-                    (!data.isPresent("block_condition") || (((ConditionFactory<CachedBlockPosition>.Instance)data.get("block_condition")).test(
+                    (!data.isPresent("block_condition") || (((ConditionFactory<CachedBlockPosition>.Instance) data.get("block_condition")).test(
                             new CachedBlockPosition(entity.getWorld(), BlockPos.ofFloored(entity.getX(), entity.getBoundingBox().minY - 0.0000001D, entity.getZ()), true))))));
+    @SuppressWarnings("unchecked")
+    public static final ConditionFactory<Entity> NEARBY_ENTITIES = registerEntityCondition(new ConditionFactory<>(Voile.id("nearby_entities"), new SerializableData()
+            .add("entity_condition", ApoliDataTypes.ENTITY_CONDITION, null)
+            .add("distance", SerializableDataTypes.FLOAT)
+            .add("count", SerializableDataTypes.INT, 1),
+            (data, entity) -> {
+                if (data.getInt("count") <= 0) return false;
+
+                if (!data.isPresent("entity_condition")) {
+                    return entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> true).size() > data.getInt("count");
+                }
+                int count = (int) entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> true)
+                        .stream().filter(target -> ((ConditionFactory<Entity>.Instance) data.get("entity_condition")).test(target)).count();
+                return count >= data.getInt("count");
+            }));
 
     // Item Conditions
     public static final ConditionFactory<Pair<World, ItemStack>> ENCHANTABILITY = registerItemCondition(new ConditionFactory<>(Voile.id("enchantability"), new SerializableData()

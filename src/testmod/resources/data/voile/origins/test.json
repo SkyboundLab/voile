@@ -23,7 +23,8 @@
     "voile:craftable_items",
     "voile:knock_back_attacker",
     "voile:no_food_slowdown",
-    "voile:water_breathing"
+    "voile:water_breathing",
+    "voile:nearby_boats"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

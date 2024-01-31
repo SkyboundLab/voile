@@ -1,0 +1,16 @@
+{
+  "type": "apoli:action_over_time",
+  "entity_action": {
+    "type": "apoli:heal",
+    "amount": 1
+  },
+  "interval": 20,
+  "condition": {
+    "type": "voile:nearby_entities",
+    "entity_condition": {
+      "type": "apoli:entity_type",
+      "entity_type": "minecraft:boat"
+    },
+    "distance": 16
+  }
+}
