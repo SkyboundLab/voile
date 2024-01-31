@@ -51,5 +51,7 @@
   "power.voile.water_breathing.name": "Water Breathing Example",
   "power.voile.water_breathing.description": "You can breathe underwater during the night.",
   "power.voile.nearby_boats.name": "Nearby Entities Example",
-  "power.voile.nearby_boats.description": "You heal when near boats."
+  "power.voile.nearby_boats.description": "You heal when near boats.",
+  "power.voile.random_negative_effect.name": "Apply Random Effect Example",
+  "power.voile.random_negative_effect.description": "You get a random negative status effect every time you take fall damage."
 }

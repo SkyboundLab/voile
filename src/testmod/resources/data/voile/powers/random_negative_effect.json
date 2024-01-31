@@ -1,0 +1,14 @@
+{
+  "type": "apoli:modify_damage_taken",
+  "self_action": {
+    "type": "voile:apply_random_effect",
+    "category": "harmful",
+    "filtered_effects": [
+      "minecraft:instant_damage"
+    ]
+  },
+  "damage_condition": {
+    "type": "apoli:in_tag",
+    "tag": "minecraft:is_fall"
+  }
+}

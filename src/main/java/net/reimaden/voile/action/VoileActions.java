@@ -43,6 +43,16 @@ public class VoileActions {
     public static final ActionFactory<Entity> DISABLE_SHIELD = registerEntityAction(new ActionFactory<>(Voile.id("disable_shield"), new SerializableData(),
             DisableShieldAction::action)
     );
+    public static final ActionFactory<Entity> APPLY_RANDOM_EFFECT = registerEntityAction(new ActionFactory<>(Voile.id("apply_random_effect"), new SerializableData()
+            .add("category", SerializableDataType.enumValue(StatusEffectCategory.class))
+            .add("duration", SerializableDataTypes.INT, 100)
+            .add("amplifier", SerializableDataTypes.INT, 0)
+            .add("is_ambient", SerializableDataTypes.BOOLEAN, false)
+            .add("show_particles", SerializableDataTypes.BOOLEAN, true)
+            .add("show_icon", SerializableDataTypes.BOOLEAN, true)
+            .add("filtered_effects", SerializableDataType.list(SerializableDataTypes.STATUS_EFFECT), null),
+            ApplyRandomEffectAction::action)
+    );
 
     private static ActionFactory<Entity> registerEntityAction(ActionFactory<Entity> factory) {
         return Registry.register(ApoliRegistries.ENTITY_ACTION, factory.getSerializerId(), factory);
