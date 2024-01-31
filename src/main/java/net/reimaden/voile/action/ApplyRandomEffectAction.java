@@ -35,10 +35,16 @@ public class ApplyRandomEffectAction {
         if (!(entity instanceof LivingEntity living)) return;
 
         if (!entity.getWorld().isClient()) {
-            // Get all status effects with the specified category
-            List<StatusEffect> effects = Registries.STATUS_EFFECT.stream()
-                    .filter(effect -> effect.getCategory().equals(data.get("category")))
-                    .collect(Collectors.toList());
+            List<StatusEffect> effects;
+            if (data.isPresent("category")) {
+                // Filter status effects by category if "category" is present
+                effects = Registries.STATUS_EFFECT.stream()
+                        .filter(effect -> effect.getCategory().equals(data.get("category")))
+                        .collect(Collectors.toList());
+            } else {
+                // Otherwise, get all status effects
+                effects = Registries.STATUS_EFFECT.stream().collect(Collectors.toList());
+            }
 
             // If there are any effects to filter, remove them from the list
             if (data.isPresent("filtered_effects")) {
