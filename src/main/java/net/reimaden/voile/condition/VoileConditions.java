@@ -58,7 +58,7 @@ public class VoileConditions {
 
                 if (!data.isPresent("entity_condition")) {
                     return entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> entity != predicate)
-                            .size() > data.getInt("count");
+                            .size() >= data.getInt("count");
                 }
                 int count = (int) entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> entity != predicate)
                         .stream().filter(target -> ((ConditionFactory<Entity>.Instance) data.get("entity_condition")).test(target)).count();
