@@ -57,9 +57,10 @@ public class VoileConditions {
                 if (data.getInt("count") <= 0) return false;
 
                 if (!data.isPresent("entity_condition")) {
-                    return entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> true).size() > data.getInt("count");
+                    return entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> entity != predicate)
+                            .size() > data.getInt("count");
                 }
-                int count = (int) entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> true)
+                int count = (int) entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> entity != predicate)
                         .stream().filter(target -> ((ConditionFactory<Entity>.Instance) data.get("entity_condition")).test(target)).count();
                 return count >= data.getInt("count");
             }));
