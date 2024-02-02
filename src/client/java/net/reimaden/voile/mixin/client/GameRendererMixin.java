@@ -41,15 +41,14 @@ public abstract class GameRendererMixin {
 
     @Inject(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;update(Lnet/minecraft/world/BlockView;Lnet/minecraft/entity/Entity;ZZF)V", shift = At.Shift.AFTER))
     private void voile$flipView(float tickDelta, long limitTime, MatrixStack matrices, CallbackInfo ci) {
-        Entity player = this.getCamera().getFocusedEntity();
-        if (player == null) return;
+        Entity entity = this.getCamera().getFocusedEntity();
+        if (entity == null) return;
 
-        String string = Formatting.strip(player.getName().getString());
-        // Don't flip the player's view if they would be flipped the right way up due to their name
-        // This is very unlikely to happen, but it's more of a joke than anything
+        String string = Formatting.strip(entity.getName().getString());
+        // Don't flip the entity's view if they would be flipped the right way up due to their name
         if ("Dinnerbone".equals(string) || "Grumm".equals(string)) return;
 
-        List<FlipModelPower> powers = PowerHolderComponent.getPowers(player, FlipModelPower.class);
+        List<FlipModelPower> powers = PowerHolderComponent.getPowers(entity, FlipModelPower.class);
 
         if (powers.stream().anyMatch(FlipModelPower::shouldFlipView)) {
             matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180f));
