@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -24,7 +24,14 @@ import net.minecraft.entity.LivingEntity;
 
 public class FlipModelPower extends Power {
 
-    public FlipModelPower(PowerType<?> type, LivingEntity entity) {
+    private final boolean flipView;
+
+    public FlipModelPower(PowerType<?> type, LivingEntity entity, boolean flipView) {
         super(type, entity);
+        this.flipView = flipView;
+    }
+
+    public boolean shouldFlipView() {
+        return this.flipView;
     }
 }

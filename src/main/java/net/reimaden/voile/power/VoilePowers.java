@@ -41,9 +41,10 @@ public class VoilePowers {
             .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
             data -> (type, entity) -> new ModifyBehaviorPower(type, entity, data.get("behavior"), data.get("entity_condition"), data.get("bientity_condition")))
             .allowCondition());
-    public static final PowerFactory<Power> FLIP_MODEL = registerPower(new PowerFactory<>(Voile.id("flip_model"), new SerializableData(),
-            data -> FlipModelPower::new))
-            .allowCondition();
+    public static final PowerFactory<Power> FLIP_MODEL = registerPower(new PowerFactory<>(Voile.id("flip_model"), new SerializableData()
+            .add("flip_view", SerializableDataTypes.BOOLEAN, false),
+            data -> (type, entity) -> new FlipModelPower(type, entity, data.getBoolean("flip_view")))
+            .allowCondition());
     public static final PowerFactory<Power> MODIFY_SCALE = registerPower(new PowerFactory<>(Voile.id("modify_scale"), new SerializableData()
             .add("scale_types", SerializableDataTypes.IDENTIFIERS, ModifyScalePower.DEFAULT_SCALE_TYPES)
             .add("scale", SerializableDataTypes.FLOAT),
