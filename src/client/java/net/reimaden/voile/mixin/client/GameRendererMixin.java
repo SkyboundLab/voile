@@ -19,13 +19,15 @@
 package net.reimaden.voile.mixin.client;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.RotationAxis;
 import net.reimaden.voile.power.FlipModelPower;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -33,11 +35,20 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(GameRenderer.class)
-public class GameRendererMixin {
+public abstract class GameRendererMixin {
+
+    @Shadow public abstract Camera getCamera();
 
     @Inject(method = "renderWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/Camera;update(Lnet/minecraft/world/BlockView;Lnet/minecraft/entity/Entity;ZZF)V", shift = At.Shift.AFTER))
     private void voile$flipView(float tickDelta, long limitTime, MatrixStack matrices, CallbackInfo ci) {
-        ClientPlayerEntity player = MinecraftClient.getInstance().player;
+        Entity player = this.getCamera().getFocusedEntity();
+        if (player == null) return;
+
+        String string = Formatting.strip(player.getName().getString());
+        // Don't flip the player's view if they would be flipped the right way up due to their name
+        // This is very unlikely to happen, but it's more of a joke than anything
+        if ("Dinnerbone".equals(string) || "Grumm".equals(string)) return;
+
         List<FlipModelPower> powers = PowerHolderComponent.getPowers(player, FlipModelPower.class);
 
         if (powers.stream().anyMatch(FlipModelPower::shouldFlipView)) {
