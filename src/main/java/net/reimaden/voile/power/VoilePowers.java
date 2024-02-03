@@ -103,6 +103,11 @@ public class VoilePowers {
     public static final PowerFactory<Power> WATER_BREATHING = registerPower(new PowerFactory<>(Voile.id("water_breathing"), new SerializableData(),
             data -> WaterBreathingPower::new))
             .allowCondition();
+    public static final PowerFactory<Power> PREVENT_TAMING = registerPower(new PowerFactory<>(Voile.id("prevent_taming"), new SerializableData()
+            .add("bientity_action", ApoliDataTypes.BIENTITY_ACTION, null)
+            .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
+            data -> (type, entity) -> new PreventTamingPower(type, entity, data.get("bientity_action"), data.get("bientity_condition")))
+            .allowCondition());
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);

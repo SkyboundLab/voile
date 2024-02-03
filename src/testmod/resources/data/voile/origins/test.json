@@ -25,7 +25,8 @@
     "voile:no_food_slowdown",
     "voile:water_breathing",
     "voile:nearby_boats",
-    "voile:random_negative_effect"
+    "voile:random_negative_effect",
+    "voile:cant_tame_cats"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,
