@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -20,6 +20,7 @@ package net.reimaden.voile.mixin;
 
 import net.minecraft.entity.ai.goal.EscapeDangerGoal;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.reimaden.voile.power.ModifyBehaviorPower;
 import net.reimaden.voile.util.BehaviorHelper;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -38,7 +39,7 @@ public class EscapeDangerGoalMixin {
         BehaviorHelper behaviorHelper = new BehaviorHelper(this.mob.getAttacker(), this.mob);
 
         if (behaviorHelper.checkEntity()) {
-            if (behaviorHelper.hostileOrPassive()) {
+            if (behaviorHelper.behaviorMatches(ModifyBehaviorPower.EntityBehavior.PASSIVE)) {
                 cir.setReturnValue(false);
             }
         }
