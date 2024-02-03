@@ -33,6 +33,7 @@
     "PolarBearEntityMixin",
     "ProjectileEntityMixin",
     "PufferFishEntityMixin",
+    "ServerPlayNetworkHandlerMixin",
     "SnowGolemEntityMixin",
     "SpiderEntityMixin",
     "StatusEffectMixin",

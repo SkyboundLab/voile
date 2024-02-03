@@ -108,6 +108,9 @@ public class VoilePowers {
             .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
             data -> (type, entity) -> new PreventTamingPower(type, entity, data.get("bientity_action"), data.get("bientity_condition")))
             .allowCondition());
+    public static final PowerFactory<Power> PREVENT_FLYING_KICK = registerPower(new PowerFactory<>(Voile.id("prevent_flying_kick"), new SerializableData(),
+            data -> PreventFlyingKickPower::new))
+            .allowCondition();
 
     private static PowerFactory<Power> registerPower(PowerFactory<Power> factory) {
         return Registry.register(ApoliRegistries.POWER_FACTORY, factory.getSerializerId(), factory);
