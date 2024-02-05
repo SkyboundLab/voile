@@ -28,6 +28,7 @@ import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.Registry;
+import net.minecraft.util.Pair;
 import net.reimaden.voile.Voile;
 
 @SuppressWarnings("unused")
@@ -54,15 +55,19 @@ public class VoileActions {
             ApplyRandomEffectAction::action)
     );
 
+    public static final ActionFactory<Pair<Entity, Entity>> STORE_DATA = registerBiEntityAction(new ActionFactory<>(Voile.id("store_data"), new SerializableData()
+            .add("path", SerializableDataTypes.STRING)
+            .add("objective", SerializableDataTypes.STRING),
+            StoreDataAction::action)
+    );
+
     private static ActionFactory<Entity> registerEntityAction(ActionFactory<Entity> factory) {
         return Registry.register(ApoliRegistries.ENTITY_ACTION, factory.getSerializerId(), factory);
     }
 
-    /* noinspection
     private static ActionFactory<Pair<Entity, Entity>> registerBiEntityAction(ActionFactory<Pair<Entity, Entity>> factory) {
         return Registry.register(ApoliRegistries.BIENTITY_ACTION, factory.getSerializerId(), factory);
     }
-     */
 
     public static void register() {
         Voile.LOGGER.debug("Registering actions for " + Voile.MOD_ID);
