@@ -18,11 +18,15 @@
 
 package net.reimaden.voile.power;
 
+import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
+import io.github.apace100.apoli.power.factory.PowerFactory;
+import io.github.apace100.calio.data.SerializableData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Pair;
+import net.reimaden.voile.Voile;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -46,5 +50,15 @@ public class PreventTamingPower extends Power {
         if (this.biEntityAction != null) {
             this.biEntityAction.accept(new Pair<>(this.entity, other));
         }
+    }
+
+    public static PowerFactory<Power> createFactory() {
+        return new PowerFactory<>(
+                Voile.id("prevent_taming"),
+                new SerializableData()
+                        .add("bientity_action", ApoliDataTypes.BIENTITY_ACTION, null)
+                        .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null),
+                data -> (type, entity) -> new PreventTamingPower(type, entity, data.get("bientity_action"), data.get("bientity_condition"))
+        ).allowCondition();
     }
 }

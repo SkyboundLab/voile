@@ -20,11 +20,22 @@ package net.reimaden.voile.power;
 
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
+import io.github.apace100.apoli.power.factory.PowerFactory;
+import io.github.apace100.calio.data.SerializableData;
 import net.minecraft.entity.LivingEntity;
+import net.reimaden.voile.Voile;
 
 public class WaterBreathingPower extends Power {
 
     public WaterBreathingPower(PowerType<?> type, LivingEntity entity) {
         super(type, entity);
+    }
+
+    public static PowerFactory<Power> createFactory() {
+        return new PowerFactory<>(
+                Voile.id("water_breathing"),
+                new SerializableData(),
+                data -> (type, entity) -> new WaterBreathingPower(type, entity)
+        ).allowCondition();
     }
 }

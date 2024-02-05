@@ -16,9 +16,11 @@
  * along with Voile.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.reimaden.voile.action;
+package net.reimaden.voile.action.bientity;
 
+import io.github.apace100.apoli.power.factory.action.ActionFactory;
 import io.github.apace100.calio.data.SerializableData;
+import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -26,13 +28,13 @@ import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.scoreboard.ScoreboardPlayerScore;
 import net.minecraft.util.Pair;
+import net.reimaden.voile.Voile;
 
 public class StoreDataAction {
 
-    public static void action(SerializableData.Instance data, Pair<Entity, Entity> entities) {
-
-        Entity actor = entities.getLeft();
-        Entity target = entities.getRight();
+    public static void action(SerializableData.Instance data, Pair<Entity, Entity> actorAndTarget) {
+        Entity actor = actorAndTarget.getLeft();
+        Entity target = actorAndTarget.getRight();
 
         if (actor == null || target == null) return;
 
@@ -71,5 +73,15 @@ public class StoreDataAction {
             ScoreboardPlayerScore scoreboardPlayerScore = scoreboard.getPlayerScore(name, scoreboardObjective);
             scoreboardPlayerScore.setScore(score);
         }
+    }
+
+    public static ActionFactory<Pair<Entity, Entity>> getFactory() {
+        return new ActionFactory<>(
+                Voile.id("store_data"),
+                new SerializableData()
+                        .add("path", SerializableDataTypes.STRING)
+                        .add("objective", SerializableDataTypes.STRING),
+                StoreDataAction::action
+        );
     }
 }

@@ -18,12 +18,17 @@
 
 package net.reimaden.voile.power;
 
+import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
+import io.github.apace100.apoli.power.factory.PowerFactory;
+import io.github.apace100.calio.data.SerializableData;
+import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Pair;
 import net.minecraft.world.World;
+import net.reimaden.voile.Voile;
 
 import java.util.function.Predicate;
 
@@ -44,5 +49,15 @@ public class PreventItemSlowdownPower extends Power {
 
     public boolean getCanStartSprinting() {
         return this.canStartSprinting;
+    }
+
+    public static PowerFactory<Power> createFactory() {
+        return new PowerFactory<>(
+                Voile.id("prevent_item_slowdown"),
+                new SerializableData()
+                        .add("item_condition", ApoliDataTypes.ITEM_CONDITION, null)
+                        .add("can_start_sprinting", SerializableDataTypes.BOOLEAN, true),
+                data -> (type, entity) -> new PreventItemSlowdownPower(type, entity, data.get("item_condition"), data.getBoolean("can_start_sprinting"))
+        ).allowCondition();
     }
 }
