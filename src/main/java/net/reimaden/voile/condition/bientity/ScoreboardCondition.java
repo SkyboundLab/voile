@@ -59,7 +59,7 @@ public class ScoreboardCondition {
                 new SerializableData()
                         .add("actor_objective", SerializableDataTypes.STRING)
                         .add("target_objective", SerializableDataTypes.STRING)
-                        .add("comparison", ApoliDataTypes.COMPARISON),
+                        .add("comparison", ApoliDataTypes.COMPARISON, Comparison.EQUAL),
                 ScoreboardCondition::condition
         );
     }
