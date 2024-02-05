@@ -26,9 +26,12 @@ import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.block.pattern.CachedBlockPosition;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registry;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -65,6 +68,32 @@ public class VoileConditions {
                 return count >= data.getInt("count");
             }));
 
+    // Bi-Entity Conditions
+    public static final ConditionFactory<Pair<Entity, Entity>> SCOREBOARD = registerBiEntityCondition(new ConditionFactory<>(Voile.id("scoreboard"), new SerializableData()
+            .add("actor_objective", SerializableDataTypes.STRING)
+            .add("target_objective", SerializableDataTypes.STRING)
+            .add("comparison", ApoliDataTypes.COMPARISON),
+            (data, pair) -> {
+                Entity actor = pair.getLeft();
+                Entity target = pair.getRight();
+
+                if (actor == null || target == null) return false;
+
+                String actorName = actor instanceof PlayerEntity playerEntity ? playerEntity.getName().getString() : actor.getUuidAsString();
+                String targetName = target instanceof PlayerEntity playerEntity ? playerEntity.getName().getString() : target.getUuidAsString();
+
+                Scoreboard scoreboard = actor.getWorld().getScoreboard();
+                ScoreboardObjective actorObjective = scoreboard.getNullableObjective(data.getString("actor_objective"));
+                ScoreboardObjective targetObjective = scoreboard.getNullableObjective(data.getString("target_objective"));
+
+                if (scoreboard.playerHasObjective(actorName, actorObjective) && scoreboard.playerHasObjective(targetName, targetObjective)) {
+                    Comparison comparison = data.get("comparison");
+                    return comparison.compare(scoreboard.getPlayerScore(actorName, actorObjective).getScore(), scoreboard.getPlayerScore(targetName, targetObjective).getScore());
+                }
+
+                return false;
+            }));
+
     // Item Conditions
     public static final ConditionFactory<Pair<World, ItemStack>> ENCHANTABILITY = registerItemCondition(new ConditionFactory<>(Voile.id("enchantability"), new SerializableData()
             .add("comparison", ApoliDataTypes.COMPARISON, Comparison.GREATER_THAN_OR_EQUAL)
@@ -86,6 +115,10 @@ public class VoileConditions {
 
     private static ConditionFactory<Entity> registerEntityCondition(ConditionFactory<Entity> factory) {
         return Registry.register(ApoliRegistries.ENTITY_CONDITION, factory.getSerializerId(), factory);
+    }
+
+    private static ConditionFactory<Pair<Entity, Entity>> registerBiEntityCondition(ConditionFactory<Pair<Entity, Entity>> factory) {
+        return Registry.register(ApoliRegistries.BIENTITY_CONDITION, factory.getSerializerId(), factory);
     }
 
     private static ConditionFactory<Pair<World, ItemStack>> registerItemCondition(ConditionFactory<Pair<World, ItemStack>> factory) {

@@ -27,7 +27,8 @@
     "voile:nearby_boats",
     "voile:random_negative_effect",
     "voile:cant_tame_cats",
-    "voile:store_uuid"
+    "voile:store_uuid",
+    "voile:compare_deaths"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,
