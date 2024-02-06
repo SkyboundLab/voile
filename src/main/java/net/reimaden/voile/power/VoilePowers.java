@@ -48,6 +48,7 @@ public class VoilePowers {
         registerPower(WaterBreathingPower::createFactory);
         registerPower(PreventTamingPower::createFactory);
         registerPower(PreventFlyingKickPower::createFactory);
+        registerPower(ActionOnEntityDeathPower::createFactory);
     }
 
     private static void registerPower(PowerFactory<?> factory) {

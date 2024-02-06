@@ -28,7 +28,8 @@
     "voile:random_negative_effect",
     "voile:cant_tame_cats",
     "voile:store_uuid",
-    "voile:compare_deaths"
+    "voile:compare_deaths",
+    "voile:when_pigs_fly"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

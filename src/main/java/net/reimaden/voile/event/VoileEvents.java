@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -27,5 +27,6 @@ public class VoileEvents {
         Voile.LOGGER.debug("Registering events for " + Voile.MOD_ID);
 
         ServerLivingEntityEvents.ALLOW_DEATH.register(new ConvertEntityEvent());
+        ServerLivingEntityEvents.AFTER_DEATH.register(new ListenToEntityDeathEvent());
     }
 }

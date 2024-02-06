@@ -1,0 +1,21 @@
+{
+  "type": "voile:action_on_entity_death",
+  "bientity_action": {
+    "type": "apoli:actor_action",
+    "action": {
+      "type": "apoli:execute_command",
+      "command": "title @s actionbar {\"text\":\"A pig has died!\",\"color\":\"dark_green\"}"
+    }
+  },
+  "bientity_condition": {
+    "type": "apoli:target_condition",
+    "condition": {
+      "type": "apoli:entity_type",
+      "entity_type": "minecraft:pig"
+    }
+  },
+  "damage_condition": {
+    "type": "apoli:in_tag",
+    "tag": "minecraft:is_fall"
+  }
+}
