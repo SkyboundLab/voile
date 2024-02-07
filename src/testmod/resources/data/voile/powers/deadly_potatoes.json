@@ -1,0 +1,12 @@
+{
+  "type": "apoli:action_on_item_use",
+  "entity_action": {
+    "type": "voile:kill"
+  },
+  "item_condition": {
+    "type": "apoli:ingredient",
+    "ingredient": {
+      "item": "minecraft:baked_potato"
+    }
+  }
+}

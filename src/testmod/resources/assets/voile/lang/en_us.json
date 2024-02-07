@@ -61,5 +61,7 @@
   "power.voile.compare_deaths.name": "Scoreboard Example",
   "power.voile.compare_deaths.description": "Compares your score in the \"deaths\" objective to nearby entities', and deals damage if they're equal.",
   "power.voile.when_pigs_fly.name": "Action On Entity Death Example",
-  "power.voile.when_pigs_fly.description": "You are alerted to pigs dying from fall damage."
+  "power.voile.when_pigs_fly.description": "You are alerted to pigs dying from fall damage.",
+  "power.voile.deadly_potatoes.name": "Kill Example",
+  "power.voile.deadly_potatoes.description": "Eating a baked potato kills you."
 }
