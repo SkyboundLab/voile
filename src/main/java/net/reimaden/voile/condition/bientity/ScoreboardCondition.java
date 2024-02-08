@@ -38,8 +38,8 @@ public class ScoreboardCondition {
 
         if (actor == null || target == null) return false;
 
-        String actorName = actor instanceof PlayerEntity playerEntity ? playerEntity.getName().getString() : actor.getUuidAsString();
-        String targetName = target instanceof PlayerEntity playerEntity ? playerEntity.getName().getString() : target.getUuidAsString();
+        String actorName = getName(actor);
+        String targetName = getName(target);
 
         Scoreboard scoreboard = actor.getWorld().getScoreboard();
         ScoreboardObjective actorObjective = scoreboard.getNullableObjective(data.getString("actor_objective"));
@@ -62,5 +62,9 @@ public class ScoreboardCondition {
                         .add("comparison", ApoliDataTypes.COMPARISON, Comparison.EQUAL),
                 ScoreboardCondition::condition
         );
+    }
+
+    private static String getName(Entity entity) {
+        return entity instanceof PlayerEntity playerEntity ? playerEntity.getEntityName() : entity.getUuidAsString();
     }
 }
