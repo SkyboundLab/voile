@@ -50,6 +50,7 @@ public class CheckSetCondition {
         Predicate<Pair<Entity, Entity>> biEntityCondition = data.get("bientity_condition");
 
         List<UUID> uuids = new LinkedList<>(entitySetPower.getIterationSet());
+        if (uuids.isEmpty()) return false;
         if (data.getBoolean("reverse")) {
             Collections.reverse(uuids);
         }
