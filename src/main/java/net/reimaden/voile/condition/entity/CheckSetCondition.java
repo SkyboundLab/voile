@@ -63,7 +63,7 @@ public class CheckSetCondition {
         }
 
         for (UUID uuid : uuids) {
-            Entity entityFromSet = entitySetPower.getEntity(uuid);
+            Entity entityFromSet = entitySetPower.getEntity(uuid, false);
             Pair<Entity, Entity> entityPair = new Pair<>(entity, entityFromSet);
 
             if (biEntityCondition.test(entityPair)) {
