@@ -30,7 +30,8 @@
     "voile:store_uuid",
     "voile:compare_deaths",
     "voile:when_pigs_fly",
-    "voile:deadly_potatoes"
+    "voile:deadly_potatoes",
+    "voile:teleport_to_random_player"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

@@ -25,10 +25,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Pair;
 import net.reimaden.voile.Voile;
 import net.reimaden.voile.action.bientity.StoreDataAction;
-import net.reimaden.voile.action.entity.ApplyRandomEffectAction;
-import net.reimaden.voile.action.entity.ChangeResourceWithStatusEffectsAction;
-import net.reimaden.voile.action.entity.DisableShieldAction;
-import net.reimaden.voile.action.entity.KillAction;
+import net.reimaden.voile.action.entity.*;
 
 public class VoileActions {
 
@@ -40,6 +37,7 @@ public class VoileActions {
         registerEntityAction(DisableShieldAction.getFactory());
         registerEntityAction(ApplyRandomEffectAction.getFactory());
         registerEntityAction(KillAction.getFactory());
+        registerEntityAction(TeleportToEntityAction.getFactory());
 
         // Bi-Entity Actions
         registerBiEntityAction(StoreDataAction.getFactory());

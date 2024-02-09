@@ -1,0 +1,23 @@
+{
+  "type": "apoli:active_self",
+  "entity_action": {
+    "type": "voile:teleport_to_entity",
+    "bientity_condition": {
+      "type": "apoli:target_condition",
+      "condition": {
+        "type": "apoli:entity_type",
+        "entity_type": "minecraft:player"
+      }
+    },
+    "fail_action": {
+      "type": "apoli:play_sound",
+      "sound": "minecraft:block.note_block.bass",
+      "pitch": 0.5
+    },
+    "sound": "minecraft:entity.enderman.teleport"
+  },
+  "cooldown": 60,
+  "hud_render": {
+    "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png"
+  }
+}

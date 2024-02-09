@@ -63,5 +63,7 @@
   "power.voile.when_pigs_fly.name": "Action On Entity Death Example",
   "power.voile.when_pigs_fly.description": "You are alerted to pigs dying from fall damage.",
   "power.voile.deadly_potatoes.name": "Kill Example",
-  "power.voile.deadly_potatoes.description": "Eating a baked potato kills you."
+  "power.voile.deadly_potatoes.description": "Eating a baked potato kills you.",
+  "power.voile.teleport_to_random_player.name": "Teleport To Entity Example",
+  "power.voile.teleport_to_random_player.description": "You can teleport to a random player on the server."
 }
