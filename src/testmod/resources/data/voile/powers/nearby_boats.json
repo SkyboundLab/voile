@@ -7,9 +7,12 @@
   "interval": 20,
   "condition": {
     "type": "voile:nearby_entities",
-    "entity_condition": {
-      "type": "apoli:entity_type",
-      "entity_type": "minecraft:boat"
+    "bientity_condition": {
+      "type": "apoli:target_condition",
+      "condition": {
+        "type": "apoli:entity_type",
+        "entity_type": "minecraft:boat"
+      }
     },
     "distance": 16
   }

@@ -23,28 +23,34 @@ import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.Pair;
 import net.reimaden.voile.Voile;
+
+import java.util.function.Predicate;
 
 public class NearbyEntitiesCondition {
 
     public static boolean condition(SerializableData.Instance data, Entity entity) {
-        if (data.getInt("count") < 0) return false;
+        int count = data.getInt("count");
+        if (count < 0) return false;
 
-        if (!data.isPresent("entity_condition")) {
-            return entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> entity != predicate)
-                    .size() >= data.getInt("count");
+        Predicate<Pair<Entity, Entity>> biEntityCondition = data.get("bientity_condition");
+        float distance = data.getFloat("distance");
+
+        if (biEntityCondition == null) {
+            return entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(distance), predicate -> entity != predicate)
+                    .size() >= count;
         }
-        //noinspection unchecked
-        int count = (int) entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(data.getFloat("distance")), predicate -> entity != predicate)
-                .stream().filter(target -> ((ConditionFactory<Entity>.Instance) data.get("entity_condition")).test(target)).count();
-        return count >= data.getInt("count");
+        int entities = (int) entity.getWorld().getEntitiesByClass(Entity.class, entity.getBoundingBox().expand(distance), predicate -> entity != predicate)
+                .stream().filter(target -> biEntityCondition.test(new Pair<>(entity, target))).count();
+        return entities >= count;
     }
 
     public static ConditionFactory<Entity> getFactory() {
         return new ConditionFactory<>(
                 Voile.id("nearby_entities"),
                 new SerializableData()
-                        .add("entity_condition", ApoliDataTypes.ENTITY_CONDITION, null)
+                        .add("bientity_condition", ApoliDataTypes.BIENTITY_CONDITION, null)
                         .add("distance", SerializableDataTypes.FLOAT)
                         .add("count", SerializableDataTypes.INT, 1),
                 NearbyEntitiesCondition::condition
