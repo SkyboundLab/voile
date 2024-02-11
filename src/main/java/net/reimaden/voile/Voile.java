@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -36,6 +36,8 @@ public class Voile implements ModInitializer {
 	public static final String MOD_NAME = "Voile";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 	private static String VERSION;
+
+	public static final Identifier IMPERSONATION_KEY = Voile.id("disguise");
 
 	@Override
 	public void onInitialize() {

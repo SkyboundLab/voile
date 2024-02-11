@@ -24,6 +24,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Pair;
 import net.reimaden.voile.Voile;
+import net.reimaden.voile.action.bientity.DisguiseAction;
 import net.reimaden.voile.action.bientity.StoreDataAction;
 import net.reimaden.voile.action.entity.*;
 
@@ -38,9 +39,11 @@ public class VoileActions {
         registerEntityAction(ApplyRandomEffectAction.getFactory());
         registerEntityAction(KillAction.getFactory());
         registerEntityAction(TeleportToEntityAction.getFactory());
+        registerEntityAction(RemoveDisguiseAction.getFactory());
 
         // Bi-Entity Actions
         registerBiEntityAction(StoreDataAction.getFactory());
+        registerBiEntityAction(DisguiseAction.getFactory());
     }
 
     private static void registerEntityAction(ActionFactory<Entity> factory) {

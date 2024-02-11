@@ -31,7 +31,8 @@
     "voile:compare_deaths",
     "voile:when_pigs_fly",
     "voile:deadly_potatoes",
-    "voile:teleport_to_random_player"
+    "voile:teleport_to_random_player",
+    "voile:impersonation"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

@@ -65,5 +65,7 @@
   "power.voile.deadly_potatoes.name": "Kill Example",
   "power.voile.deadly_potatoes.description": "Eating a baked potato kills you.",
   "power.voile.teleport_to_random_player.name": "Teleport To Entity Example",
-  "power.voile.teleport_to_random_player.description": "You can teleport to a random player on the server."
+  "power.voile.teleport_to_random_player.description": "You can teleport to a random player on the server.",
+  "power.voile.impersonation.name": "Disguise & Remove Disguise Example",
+  "power.voile.impersonation.description": "You can impersonate other players. Your disguise is removed when you take 10 or more damage."
 }
