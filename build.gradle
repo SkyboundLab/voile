@@ -110,7 +110,7 @@ dependencies {
 	// Impersonate
 	// Using my 1.20.2 fork until Origins updates to 1.20.4 or higher
 	modImplementation(include("com.github.Maxmani:Impersonate:${project.impersonate_version}"))
-	modApi(include("me.lucko:fabric-permissions-api:${project.fpa_version}"))
+	include "me.lucko:fabric-permissions-api:${project.fpa_version}"
 
 	// Origins (for test mod)
 	modLocalRuntime "com.github.apace100:origins-fabric:${project.origins_version}"
