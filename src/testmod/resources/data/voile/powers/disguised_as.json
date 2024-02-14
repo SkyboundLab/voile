@@ -1,0 +1,11 @@
+{
+  "type": "apoli:modify_damage_dealt",
+  "bientity_condition": {
+    "type": "voile:disguised"
+  },
+  "modifier": {
+    "name": "Disguised melee damage bonus",
+    "operation": "multiply_total_multiplicative",
+    "value": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "apoli:night_vision",
+  "condition": {
+    "type": "voile:disguised"
+  }
+}

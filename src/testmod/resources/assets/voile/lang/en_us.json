@@ -67,5 +67,9 @@
   "power.voile.teleport_to_random_player.name": "Teleport To Entity Example",
   "power.voile.teleport_to_random_player.description": "You can teleport to a random player on the server.",
   "power.voile.impersonation.name": "Disguise & Remove Disguise Example",
-  "power.voile.impersonation.description": "You can impersonate other players. Your disguise is removed when you take 10 or more damage."
+  "power.voile.impersonation.description": "You can impersonate other players. Your disguise is removed when you take 10 or more damage.",
+  "power.voile.has_disguise.name": "Disguise Example",
+  "power.voile.has_disguise.description": "When you have a disguise, you gain night vision.",
+  "power.voile.disguised_as.name": "Disguise Example",
+  "power.voile.disguised_as.description": "You deal double melee damage against players you are disguised as."
 }

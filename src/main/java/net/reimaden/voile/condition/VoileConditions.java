@@ -27,10 +27,7 @@ import net.minecraft.util.Pair;
 import net.minecraft.world.World;
 import net.reimaden.voile.Voile;
 import net.reimaden.voile.condition.bientity.ScoreboardCondition;
-import net.reimaden.voile.condition.entity.CheckSetCondition;
-import net.reimaden.voile.condition.entity.MoonPhaseCondition;
-import net.reimaden.voile.condition.entity.NearbyEntitiesCondition;
-import net.reimaden.voile.condition.entity.PreciseOnBlockCondition;
+import net.reimaden.voile.condition.entity.*;
 import net.reimaden.voile.condition.item.CraftableCondition;
 import net.reimaden.voile.condition.item.EnchantabilityCondition;
 
@@ -44,9 +41,11 @@ public class VoileConditions {
         registerEntityCondition(PreciseOnBlockCondition.getFactory());
         registerEntityCondition(NearbyEntitiesCondition.getFactory());
         registerEntityCondition(CheckSetCondition.getFactory());
+        registerEntityCondition(DisguisedCondition.getFactory());
 
         // Bi-Entity Conditions
         registerBiEntityCondition(ScoreboardCondition.getFactory());
+        registerBiEntityCondition(net.reimaden.voile.condition.bientity.DisguisedCondition.getFactory());
 
         // Item Conditions
         registerItemCondition(EnchantabilityCondition.getFactory());
