@@ -103,9 +103,9 @@ dependencies {
 	modApi "com.github.apace100:apoli:${project.apoli_version}"
 
 	// Pehkui
-	modApi("com.github.Virtuoel:Pehkui:${project.pehkui_version}", {
+	modImplementation(include("com.github.Virtuoel:Pehkui:${project.pehkui_version}", {
 		exclude group: "net.fabricmc.fabric-api"
-	})
+	}))
 
 	// Impersonate
 	// Using my 1.20.2 fork until Origins updates to 1.20.4 or higher
