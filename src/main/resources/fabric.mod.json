@@ -13,7 +13,8 @@
   ],
   "contact": {
     "sources": "https://github.com/Maxmani/voile",
-    "issues": "https://github.com/Maxmani/voile/issues"
+    "issues": "https://github.com/Maxmani/voile/issues",
+    "homepage": "https://modrinth.com/mod/voile"
   },
   "license": "LGPL-3.0-or-later",
   "icon": "assets/voile/icon.png",
