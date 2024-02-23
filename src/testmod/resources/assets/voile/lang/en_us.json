@@ -73,5 +73,7 @@
   "power.voile.disguised_as.name": "Disguise Example",
   "power.voile.disguised_as.description": "You deal double melee damage against players you are disguised as.",
   "power.voile.double_pickup_range.name": "Modify Pickup Range Example",
-  "power.voile.double_pickup_range.description": "You can pick up items from twice as far away while sneaking."
+  "power.voile.double_pickup_range.description": "You can pick up items from twice as far away while sneaking.",
+  "power.voile.no_totem.name": "Prevent Totem Example",
+  "power.voile.no_totem.description": "You can't use totems of undying while standing on grass."
 }

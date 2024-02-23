@@ -18,6 +18,7 @@
 
 package net.reimaden.voile.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.injector.WrapWithCondition;
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -94,5 +95,10 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
     @ModifyReturnValue(method = "canBreatheInWater", at = @At("TAIL"))
     private boolean voile$hasWaterBreathingPower(boolean original) {
         return original || PowerHolderComponent.hasPower(this, WaterBreathingPower.class);
+    }
+
+    @ModifyExpressionValue(method = "tryUseTotem", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/damage/DamageSource;isIn(Lnet/minecraft/registry/tag/TagKey;)Z"))
+    private boolean voile$preventTotem(boolean original) {
+        return original || PowerHolderComponent.hasPower(this, PreventTotemPower.class);
     }
 }

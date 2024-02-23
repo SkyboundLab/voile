@@ -1,0 +1,10 @@
+{
+  "type": "voile:prevent_totem",
+  "condition": {
+    "type": "apoli:on_block",
+    "block_condition": {
+      "type": "apoli:block",
+      "block": "minecraft:grass_block"
+    }
+  }
+}
