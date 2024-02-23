@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -19,18 +19,23 @@
 package net.reimaden.voile.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.reimaden.voile.power.ModifyPickupRangePower;
 import net.reimaden.voile.util.EnchantmentUtil;
 import net.reimaden.voile.util.ModifiedDamageEnchantment;
 import org.apache.commons.lang3.mutable.MutableFloat;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+
+import java.util.List;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
@@ -60,5 +65,19 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         });
 
         return mut.floatValue();
+    }
+
+    @ModifyVariable(method = "tickMovement", at = @At("STORE"), index = 2)
+    private Box voile$modifyPickupRange(Box original) {
+        List<ModifyPickupRangePower> powers = PowerHolderComponent.getPowers(this, ModifyPickupRangePower.class);
+        if (!powers.isEmpty()) {
+            float totalRange = 0f;
+            for (ModifyPickupRangePower power : powers) {
+                totalRange += power.getRange();
+            }
+            original = original.expand(totalRange);
+        }
+
+        return original;
     }
 }

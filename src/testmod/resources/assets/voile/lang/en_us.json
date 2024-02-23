@@ -71,5 +71,7 @@
   "power.voile.has_disguise.name": "Disguise Example",
   "power.voile.has_disguise.description": "When you have a disguise, you gain night vision.",
   "power.voile.disguised_as.name": "Disguise Example",
-  "power.voile.disguised_as.description": "You deal double melee damage against players you are disguised as."
+  "power.voile.disguised_as.description": "You deal double melee damage against players you are disguised as.",
+  "power.voile.double_pickup_range.name": "Modify Pickup Range Example",
+  "power.voile.double_pickup_range.description": "You can pick up items from twice as far away while sneaking."
 }
