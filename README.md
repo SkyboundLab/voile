@@ -11,8 +11,8 @@ Prior experience with either mod is recommended. You can find the Origins docume
 
 ### For Data Pack Developers
 
-Using Voile for your data pack is easy. Simply download the latest jar for your version of Minecraft from the releases page 
-or from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/voile) (Modrinth soon™)
+Using Voile for your data pack is easy. Simply download the latest jar for your version of Minecraft from the releases page,
+[Modrinth](https://modrinth.com/mod/voile), or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/voile),
 and include it in your instance's `mods` folder. You can then use the new types in your data pack.
 
 Voile depends on Apoli, so make sure to grab that as well. Apoli is included with Origins.
