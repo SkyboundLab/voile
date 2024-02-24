@@ -18,9 +18,11 @@
 
 package net.reimaden.voile.power;
 
+import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
 import io.github.apace100.apoli.power.factory.PowerFactory;
+import io.github.apace100.apoli.util.ResourceOperation;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.LivingEntity;
@@ -29,22 +31,29 @@ import net.reimaden.voile.Voile;
 public class ModifyDivergencePower extends Power {
 
     private final float divergence;
+    private final ResourceOperation operation;
 
-    public ModifyDivergencePower(PowerType<?> type, LivingEntity entity, float divergence) {
+    public ModifyDivergencePower(PowerType<?> type, LivingEntity entity, float divergence, ResourceOperation operation) {
         super(type, entity);
         this.divergence = divergence;
+        this.operation = operation;
     }
 
     public float getDivergence() {
         return this.divergence;
     }
 
+    public ResourceOperation getOperation() {
+        return this.operation;
+    }
+
     public static PowerFactory<Power> createFactory() {
         return new PowerFactory<>(
                 Voile.id("modify_divergence"),
                 new SerializableData()
-                        .add("divergence", SerializableDataTypes.FLOAT),
-                data -> (type, entity) -> new ModifyDivergencePower(type, entity, data.getFloat("divergence"))
+                        .add("divergence", SerializableDataTypes.FLOAT)
+                        .add("operation", ApoliDataTypes.RESOURCE_OPERATION, ResourceOperation.SET),
+                data -> (type, entity) -> new ModifyDivergencePower(type, entity, data.getFloat("divergence"), data.get("operation"))
         ).allowCondition();
     }
 }

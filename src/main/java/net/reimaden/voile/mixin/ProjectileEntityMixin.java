@@ -1,6 +1,6 @@
 /*
  * This file is part of Voile, a library mod for Minecraft.
- * Copyright (C) 2023  Maxmani
+ * Copyright (C) 2023-2024  Maxmani
  *
  * Voile is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -19,6 +19,7 @@
 package net.reimaden.voile.mixin;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
+import io.github.apace100.apoli.util.ResourceOperation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.reimaden.voile.power.ModifyDivergencePower;
@@ -26,14 +27,27 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-import java.util.Optional;
+import java.util.List;
 
 @Mixin(ProjectileEntity.class)
 public class ProjectileEntityMixin {
 
     @ModifyVariable(method = "setVelocity(Lnet/minecraft/entity/Entity;FFFFF)V", at = @At("HEAD"), ordinal = 4, argsOnly = true)
     private float voile$modifyDivergence(float original, Entity shooter) {
-        Optional<ModifyDivergencePower> power = PowerHolderComponent.getPowers(shooter, ModifyDivergencePower.class).stream().findFirst();
-        return power.map(ModifyDivergencePower::getDivergence).orElse(original);
+        List<ModifyDivergencePower> powers = PowerHolderComponent.getPowers(shooter, ModifyDivergencePower.class);
+
+        for (ModifyDivergencePower power : powers) {
+            if (power.getOperation() == ResourceOperation.SET) {
+                return power.getDivergence();
+            }
+        }
+
+        float totalDivergence = 0f;
+        for (ModifyDivergencePower power : powers) {
+            totalDivergence += power.getDivergence();
+        }
+        original += totalDivergence;
+
+        return original;
     }
 }
