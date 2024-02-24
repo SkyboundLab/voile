@@ -75,5 +75,7 @@
   "power.voile.double_pickup_range.name": "Modify Pickup Range Example",
   "power.voile.double_pickup_range.description": "You can pick up items from twice as far away while sneaking.",
   "power.voile.no_totem.name": "Prevent Totem Example",
-  "power.voile.no_totem.description": "You can't use totems of undying while standing on grass."
+  "power.voile.no_totem.description": "You can't use totems of undying while standing on grass.",
+  "power.voile.faster_arrows.name": "Modify Projectile Speed Example",
+  "power.voile.faster_arrows.description": "Arrows fired by you are 30% faster."
 }

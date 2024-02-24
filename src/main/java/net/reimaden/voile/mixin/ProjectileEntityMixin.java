@@ -21,8 +21,12 @@ package net.reimaden.voile.mixin;
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.util.ResourceOperation;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Ownable;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.world.World;
 import net.reimaden.voile.power.ModifyDivergencePower;
+import net.reimaden.voile.power.ModifyProjectileSpeedPower;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -30,7 +34,11 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import java.util.List;
 
 @Mixin(ProjectileEntity.class)
-public class ProjectileEntityMixin {
+public abstract class ProjectileEntityMixin extends Entity implements Ownable {
+
+    public ProjectileEntityMixin(EntityType<?> type, World world) {
+        super(type, world);
+    }
 
     @ModifyVariable(method = "setVelocity(Lnet/minecraft/entity/Entity;FFFFF)V", at = @At("HEAD"), ordinal = 4, argsOnly = true)
     private float voile$modifyDivergence(float original, Entity shooter) {
@@ -49,5 +57,12 @@ public class ProjectileEntityMixin {
         original += totalDivergence;
 
         return original;
+    }
+
+    @ModifyVariable(method = "setVelocity(Lnet/minecraft/entity/Entity;FFFFF)V", at = @At("HEAD"), ordinal = 3, argsOnly = true)
+    private float voile$modifySpeed(float original, Entity shooter) {
+        return PowerHolderComponent.modify(shooter, ModifyProjectileSpeedPower.class, original,
+                power -> power.doesApply(this),
+                power -> power.executeActions(this, shooter));
     }
 }

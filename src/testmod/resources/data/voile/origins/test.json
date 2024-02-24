@@ -36,7 +36,8 @@
     "voile:has_disguise",
     "voile:disguised_as",
     "voile:double_pickup_range",
-    "voile:no_totem"
+    "voile:no_totem",
+    "voile:faster_arrows"
   ],
   "icon": "minecraft:grass_block",
   "order": 1,

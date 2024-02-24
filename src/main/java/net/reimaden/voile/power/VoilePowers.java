@@ -51,6 +51,7 @@ public class VoilePowers {
         registerPower(ActionOnEntityDeathPower::createFactory);
         registerPower(ModifyPickupRangePower::createFactory);
         registerPower(PreventTotemPower::createFactory);
+        registerPower(ModifyProjectileSpeedPower::createFactory);
     }
 
     private static void registerPower(PowerFactory<?> factory) {
