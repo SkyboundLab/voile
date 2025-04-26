@@ -35,7 +35,7 @@ public class DisableShieldAction {
 
         // Make sure the player is actually using a shield
         if (player.getActiveItem().isIn(ConventionalItemTags.SHIELDS)) {
-            player.disableShield(true);
+            player.disableShield();
         }
     }
 
